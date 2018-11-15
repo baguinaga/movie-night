@@ -4,7 +4,7 @@ import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import Main from "./containers/Main";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 
 const App = () => (
   <Router>
