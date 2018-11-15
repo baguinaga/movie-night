@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Redirect} from "react-router-dom";
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 
 class Login extends Component {
@@ -7,33 +7,31 @@ class Login extends Component {
     isLoggedIn: false,
     username: "",
     password: ""
-  }
+  };
 
   handleInputChange = e => {
     const { name, value } = e.target;
 
     this.setState({
       [name]: value
-    })
-  }
+    });
+  };
 
   // Method to handle user login, should redirect to main page when done
-  login = (e) => {
+  login = e => {
     e.preventDefault();
-    API
-      .login({username: this.state.username, password: this.state.password})
+    API.login({ username: this.state.username, password: this.state.password })
       .then(res => {
         console.log(res.data);
-        this.setState({isLoggedIn: res.data})
-
+        this.setState({ isLoggedIn: res.data });
       })
       .catch(err => console.log(err.response));
-  }
+  };
 
   render() {
     // If user is logged in, take them to main page
     if (this.state.isLoggedIn) {
-      return <Redirect to="/"/>
+      return <Redirect to="/" />;
     }
 
     return (
@@ -49,8 +47,11 @@ class Login extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 className="form-control"
-                placeholder="Username"/>
-              <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
+                placeholder="Username"
+              />
+              <small id="usernameHelp" className="form-text text-muted">
+                Enter your username
+              </small>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
@@ -64,12 +65,17 @@ class Login extends Component {
               />
             </div>
 
-            <button type="submit" className="btn btn-success" onClick={this.login}>Login</button>
+            <button
+              type="submit"
+              className="btn btn-success"
+              onClick={this.login}
+            >
+              Login
+            </button>
           </form>
-
         </div>
       </div>
-    )
+    );
   }
 }
 
