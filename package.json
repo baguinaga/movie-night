@@ -1,6 +1,6 @@
 {
   "name": "fresher_tomatoes",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -13,16 +13,16 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "Billy Aguinaga & Chris Natividad",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "axios": "^0.16.2",
-    "express": "^4.16.3",
-    "mongoose": "^5.0.17",
-    "if-env": "^1.0.4"
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.3.12"
   }
 }
