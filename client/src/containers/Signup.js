@@ -7,32 +7,33 @@ class Login extends Component {
     success: false,
     username: "",
     password: ""
-  }
-  
+  };
+
   handleInputChange = e => {
     const { name, value } = e.target;
     this.setState({
-      [name] : value
-    })
-  }
+      [name]: value
+    });
+  };
 
   // Method to register a new user
-  register = (e) => {
+  register = e => {
     e.preventDefault();
-    API
-      .register({ username: this.state.username, password: this.state.password })
+    API.register({
+      username: this.state.username,
+      password: this.state.password
+    })
       .then(res => {
         console.log(res.data);
-        this.setState({ success: res.data })
-
+        this.setState({ success: res.data });
       })
       .catch(err => console.log(err.response.data));
-  }
+  };
 
   render() {
     // If Signup was a success, take them to the Login page
     if (this.state.success) {
-      return <Redirect to="/login" />
+      return <Redirect to="/login" />;
     }
 
     return (
@@ -48,8 +49,11 @@ class Login extends Component {
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 className="form-control"
-                placeholder="Username" />
-              <small id="usernameHelp" className="form-text text-muted">Enter your username</small>
+                placeholder="Username"
+              />
+              <small id="usernameHelp" className="form-text text-muted">
+                Enter your username
+              </small>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
@@ -63,12 +67,17 @@ class Login extends Component {
               />
             </div>
 
-            <button type="submit" className="btn btn-success" onClick={this.register}>Sign Up!</button>
+            <button
+              type="submit"
+              className="btn btn-success"
+              onClick={this.register}
+            >
+              Sign Up!
+            </button>
           </form>
-
         </div>
       </div>
-    )
+    );
   }
 }
 
