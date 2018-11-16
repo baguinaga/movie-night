@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
+// Enviromental variables
+require('dotenv').config()
+
 // Import routes
 const routes = require("./routes");
 
