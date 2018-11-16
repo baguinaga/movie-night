@@ -3,8 +3,8 @@ import "./Jumbotron.css";
 
 const Jumbotron = () => (
   <div className="jumbotron text-center">
-    <h1>FresherTomatoes</h1>
-    
+    <h1 className= "display-4">FreshTomatoes</h1>
+    <p class="lead">Freshly picked movies just for you..</p>
   </div>
 );
 
