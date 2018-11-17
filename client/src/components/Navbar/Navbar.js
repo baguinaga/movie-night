@@ -1,29 +1,37 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { Component } from "react";
+import { Navbar as Nav, NavItem, Input } from "react-materialize";
+import "../styles/Navbar.css";
 
-const Navbar = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <Link className="navbar-brand" to="/">FreshTomatoes</Link>
-    <div className="collapse navbar-collapse">
-      <div className="navbar-nav">
-        <li className="nav-item active">
-          <NavLink className="nav-item nav-link" to="/">
-            Home
-          </NavLink>
+class Navbar extends Component {
+  state = {
+    search: ""
+  };
+  handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  render() {
+    return (
+      <Nav className="transparent z-depth-0" right>
+        <li>
+          <Input
+            value={this.state.search}
+            onChange={this.handleInputChange}
+            className="center-align"
+            name="search"
+            icon="search"
+            label="Search"
+          />
         </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to="/signup">
-            Sign Up
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to="/login">
-            Login
-          </NavLink>
-        </li>
-      </div>
-    </div>
-  </nav>
-);
+        <NavItem>Sign In</NavItem>
+        <NavItem>Register</NavItem>
+      </Nav>
+    );
+  }
+}
 
 export default Navbar;
