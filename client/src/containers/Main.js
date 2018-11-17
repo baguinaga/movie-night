@@ -28,6 +28,13 @@ class Main extends Component {
       });
   };
 
+  //Testing OMBD API function/route
+  movieDetails = movieTitle => {
+    API.movieInfo(movieTitle)
+      .then(res => console.log(res))
+      .catch(err => console.log(err.response));
+  };
+
   render() {
     // If user isn't logged in, don't let them see this page
     if (!this.state.isLoggedIn) {
