@@ -56,6 +56,34 @@ class Login extends Component {
               </small>
             </div>
             <div className="form-group">
+              <label htmlFor="firstname">First Name</label>
+              <input
+                type="text"
+                name="username"
+                value={this.state.firstName}
+                onChange={this.handleInputChange}
+                className="form-control"
+                placeholder="First Name"
+              />
+              <small id="firstNameHelp" className="form-text text-muted">
+                Enter your first name
+              </small>
+            </div>
+            <div className="form-group">
+              <label htmlFor="username">Last Name</label>
+              <input
+                type="text"
+                name="lastname"
+                value={this.state.lastName}
+                onChange={this.handleInputChange}
+                className="form-control"
+                placeholder="Last Name"
+              />
+              <small id="lastNameHelp" className="form-text text-muted">
+                Enter your last name
+              </small>
+            </div>
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
