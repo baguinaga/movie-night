@@ -36,7 +36,7 @@ export default class MyCarousel extends Component {
                   data={this.state.entries}
                   renderItem={this._renderItem}
                   onSnapToItem={(index) => this.setState({ activeSlide: index }) }
-                  // tappableDots=  (being able to click on the dots to navigate)
+                  tappableDots={true}
                 />
                 { this.pagination }
             </View>
