@@ -5,10 +5,12 @@ import Signup from "./pages/Signup";
 import Main from "./pages/Main";
 
 import Navbar from "./components/Navbar/Navbar";
+import Parallax from "react-materialize/lib/Parallax";
 
 const App = () => (
   <Router>
     <div>
+      <Parallax>
       <Navbar />
       <Switch>
         <Route exact path="/" component={Main} />
@@ -16,6 +18,7 @@ const App = () => (
         <Route exact path="/signup" component={Signup} />
         <Route component={Main} />
       </Switch>
+      </Parallax>
     </div>
   </Router>
 );
