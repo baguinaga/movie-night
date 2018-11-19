@@ -21,8 +21,8 @@ export default {
   movieRec: function(movieTitle) {
     return axios.get(`/api/movies/rec/${movieTitle}`);
   },
-
-  movieTrend: function(movieTitle) {
-    return axios.get(`/api/movies/trending/${movieTitle}`);
+  // returns trending movies, during the week, from movied
+  movieTrend: function() {
+    return axios.get("/api/movies/trending/");
   }
 };

@@ -1,19 +1,22 @@
 import React, { Component } from "react";
+import Navbar from "../components/Navbar";
+import MovieCard from "../components/MovieCard"
 // import { Redirect } from "react-router-dom";
 import API from "../utils/API";
-import MovieCard from "../components/MovieCard"
 
-
+import "./styles/Main.css";
 
 class Main extends Component {
   state = {
     isLoggedIn: true,
-    username: ""
+    username: "",
+    movies: []
   };
 
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
+    this.trendingMovies();
   }
 
   // Check login status
@@ -31,6 +34,12 @@ class Main extends Component {
       });
   };
 
+  trendingMovies = () => {
+    API.movieTrend().then(({data}) => {
+      this.setState({ movies: data });
+    });
+  };
+
   //Testing OMBD API function/route
   // movieDetails = movieTitle => {
   //   API.movieInfo(movieTitle)
@@ -46,18 +55,14 @@ class Main extends Component {
 
     return (
       <div>
-        <MovieCard />
+        <Navbar />
+        {this.state.movies.length ? (this.state.movies.map(movie => {
+          return <MovieCard movieImage={movie.poster_path} title={movie.title}/>
+        })) : ("No movies found")}
+        
       </div>
     );
   }
 }
 
-
-//modal for each movie on click (or movie card?)
-/* <Modal
-  header='Modal Header'
-  fixedFooter
-  trigger={<Button>MODAL WITH FIXED FOOTER</Button>}>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-</Modal> */
 export default Main;
