@@ -1,37 +1,22 @@
-import React, { Component } from "react";
-import { Navbar as Nav, NavItem, Input } from "react-materialize";
+import React from "react";
+import { Navbar as Nav, NavItem } from "react-materialize";
 import "../styles/Navbar.css";
 
-class Navbar extends Component {
-  state = {
-    search: ""
-  };
-  handleInputChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({
-      [name]: value
-    });
-  };
-
-  render() {
+const Navbar = props => {
+  if (props.isLoggedIn) {
     return (
       <Nav className="transparent z-depth-0" right>
-        <li>
-          <Input
-            value={this.state.search}
-            onChange={this.handleInputChange}
-            className="center-align"
-            name="search"
-            icon="search"
-            label="Search"
-          />
-        </li>
+        <NavItem>Profile</NavItem>
+      </Nav>
+    );
+  } else {
+    return (
+      <Nav className="transparent z-depth-0" right>
         <NavItem>Sign In</NavItem>
         <NavItem>Register</NavItem>
       </Nav>
     );
   }
-}
+};
 
 export default Navbar;
