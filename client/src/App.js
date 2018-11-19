@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main";
 import Navbar from "./components/Navbar/Navbar";
+import Parallax from "react-materialize/lib/Parallax";
 
 const App = () => (
   <Router>
