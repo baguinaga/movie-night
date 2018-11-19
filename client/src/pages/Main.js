@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
+import MovieCard from "../components/MovieCard"
 // import { Redirect } from "react-router-dom";
 import API from "../utils/API";
+
 import "./styles/Main.css";
 
 class Main extends Component {
@@ -33,8 +35,8 @@ class Main extends Component {
   };
 
   trendingMovies = () => {
-    API.movieTrend().then(movies => {
-      this.setState({ movies: movies });
+    API.movieTrend().then(({data}) => {
+      this.setState({ movies: data });
     });
   };
 
@@ -54,6 +56,10 @@ class Main extends Component {
     return (
       <div>
         <Navbar />
+        {this.state.movies.length ? (this.state.movies.map(movie => {
+          return <MovieCard movieImage={movie.poster_path} title={movie.title}/>
+        })) : ("No movies found")}
+        
       </div>
     );
   }
