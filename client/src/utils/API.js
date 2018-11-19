@@ -20,5 +20,9 @@ export default {
   // moviedb recommendations, send in movie title, get id on the server and return the recommendations
   movieRec: function(movieTitle) {
     return axios.get(`/api/movies/rec/${movieTitle}`);
+  },
+
+  movieTrend: function(movieTitle) {
+    return axios.get(`/api/movies/trending/${movieTitle}`);
   }
 };
