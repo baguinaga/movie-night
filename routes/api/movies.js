@@ -18,6 +18,19 @@ router.route("/details/:title").get(function(req, res) {
     });
 });
 
+// matches with "/api/movies/trending/"
+router.route("/trending").get(function(req, res) {
+  axios
+    .get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.MOVIEDB_API_KEY}`)
+    .then(movie => {
+      res.json(movie.data);
+    })
+    .catch(err => {
+      console.log(err);
+      return res.status(500).send(err);
+    });
+});
+
 //matches with "/api/movies/rec/:title
 router.route("/rec/:title").get(function(req, res) {
   axios

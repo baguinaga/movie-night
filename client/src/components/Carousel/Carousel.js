@@ -1,45 +1,51 @@
-// import Carousel, { Pagination } from 'react-native-snap-carousel';
+import React from 'react';
+import ImageGallery from 'react-image-gallery';
 
-// export default class MyCarousel extends Component {
+class MyCarousel extends React.Component {
 
-//     _renderItem ({item, index}) {
-//         return <MySlideComponent data={item} />
-//     }
+  constructor() {
+    super();
+    this.state = {
+      showIndex: false,
+      showBullets: true,
+      infinite: true,
+      showThumbnails: true,
+      showFullscreenButton: true,
+      showGalleryFullscreenButton: true,
+      showPlayButton: true,
+      showGalleryPlayButton: true,
+      showNav: true,
+      isRTL: false,
+      slideDuration: 450,
+      slideInterval: 2000,
+      thumbnailPosition: 'bottom',
+      showVideo: {},
+    };
+  }
 
-//     get pagination () {
-//         const { entries, activeSlide } = this.state;
-//         return (
-//             <Pagination
-//               dotsLength={entries.length}
-//               activeDotIndex={activeSlide}
-//               containerStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
-//               dotStyle={{
-//                   width: 10,
-//                   height: 10,
-//                   borderRadius: 5,
-//                   marginHorizontal: 8,
-//                   backgroundColor: 'rgba(255, 255, 255, 0.92)'
-//               }}
-//               inactiveDotStyle={{
-//                   // Define styles for inactive dots here
-//               }}
-//               inactiveDotOpacity={0.4}
-//               inactiveDotScale={0.6}
-//             />
-//         );
-//     }
 
-//     render () {
-//         return (
-//             <View>
-//                 <Carousel
-//                   data={this.state.entries}
-//                   renderItem={this._renderItem}
-//                   onSnapToItem={(index) => this.setState({ activeSlide: index }) }
-//                   tappableDots={true}
-//                 />
-//                 { this.pagination }
-//             </View>
-//         );
-//     }
-//   }
+  render() {
+
+    const images = [
+      {
+        original: 'http://lorempixel.com/1000/600/nature/1/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/2/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
+      },
+      {
+        original: 'http://lorempixel.com/1000/600/nature/3/',
+        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
+      }
+    ]
+
+    return (
+      <ImageGallery items={images} />
+    );
+  }
+
+}
+
+export default MyCarousel;
