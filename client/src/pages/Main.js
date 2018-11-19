@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import {Parallax} from "react-materialize";
+// import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 
 class Main extends Component {
@@ -29,20 +30,33 @@ class Main extends Component {
   };
 
   //Testing OMBD API function/route
-  movieDetails = movieTitle => {
-    API.movieInfo(movieTitle)
-      .then(res => console.log(res))
-      .catch(err => console.log(err.response));
-  };
+  // movieDetails = movieTitle => {
+  //   API.movieInfo(movieTitle)
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log(err.response));
+  // };
 
   render() {
     // If user isn't logged in, don't let them see this page
-    if (!this.state.isLoggedIn) {
-      return <Redirect to="/login" />;
-    }
+    // if (!this.state.isLoggedIn) {
+    //   return <Redirect to="/login" />;
+    // }
 
     return (
-      <h1>You Made it to the main page {this.state.isLoggedIn.username}!</h1>
+      <div>
+        <Parallax imageSrc="images/lightsBG.png" />
+        <div className="section white">
+          <div className="row container">
+            <h2 className="header">Parallax</h2>
+            <p className="grey-text text-darken-3 lighten-3">
+              Parallax is an effect where the background content or image in
+              this case, is moved at a different speed than the foreground
+              content while scrolling.
+            </p>
+          </div>
+        </div>
+        <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg" />
+      </div>
     );
   }
 }
