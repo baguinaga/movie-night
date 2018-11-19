@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import {Parallax} from "react-materialize";
-import Sample from "../components/Sample"; 
 // import { Redirect } from "react-router-dom";
 import API from "../utils/API";
+import MovieCard from "../components/MovieCard"
 
 
 
@@ -47,15 +46,7 @@ class Main extends Component {
 
     return (
       <div>
-        <Parallax imageSrc="images/lightsBG.png" />
-        <div className="section white">
-          <div className="row container">
-            <h2 className="header">Parallax</h2>
-          
-
-          </div>
-        </div>
-        <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg" />
+        <MovieCard />
       </div>
     );
   }
