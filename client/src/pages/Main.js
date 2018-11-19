@@ -51,7 +51,7 @@ class Main extends Component {
         <div className="section white">
           <div className="row container">
             <h2 className="header">Parallax</h2>
-          <Sample />
+          
 
           </div>
         </div>
