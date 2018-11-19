@@ -4,17 +4,17 @@ import Navbar from "../components/Navbar";
 import API from "../utils/API";
 import "./styles/Main.css";
 
-
-
 class Main extends Component {
   state = {
     isLoggedIn: true,
-    username: ""
+    username: "",
+    movies: []
   };
 
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
+    this.trendingMovies();
   }
 
   // Check login status
@@ -30,6 +30,12 @@ class Main extends Component {
         console.log(err);
         this.setState({ isLoggedIn: false });
       });
+  };
+
+  trendingMovies = () => {
+    API.movieTrend().then(movies => {
+      this.setState({ movies: movies });
+    });
   };
 
   //Testing OMBD API function/route

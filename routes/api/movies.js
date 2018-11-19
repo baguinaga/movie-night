@@ -23,7 +23,7 @@ router.route("/trending").get(function(req, res) {
   axios
     .get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.MOVIEDB_API_KEY}`)
     .then(movie => {
-      res.json(movie.data);
+      res.json(movie.data.results);
     })
     .catch(err => {
       console.log(err);
