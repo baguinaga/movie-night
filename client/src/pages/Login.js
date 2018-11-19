@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
+import { Parallax } from "react-materialize";
 
 class Login extends Component {
   state = {
