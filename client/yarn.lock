@@ -2918,11 +2918,6 @@ detect-node@^2.0.3:
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.0.4.tgz#014ee8f8f669c5c58023da64b8179c083a28c46c"
   integrity sha512-ZIzRpLJrOj7jjP2miAtgqIfmzbxa4ZOr5jJc601zklsfEx9oTzmmj2nVpIPRpNlRTIh8lc1kyViIY7BWSGNmKw==
 
-detect-passive-events@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.4.tgz#6ed477e6e5bceb79079735dcd357789d37f9a91a"
-  integrity sha1-btR35uW863kHlzXc01d4nTf5qRo=
-
 detect-port-alt@1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/detect-port-alt/-/detect-port-alt-1.1.6.tgz#24707deabe932d4a3cf621302027c2b266568275"
@@ -5835,11 +5830,6 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "~3.0.0"
 
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
-  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
-
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
@@ -7862,17 +7852,6 @@ react-error-overlay@^5.1.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.0.tgz#c516995a5652e7bfbed8b497910d5280df74a7e8"
   integrity sha512-akMy/BQT5m1J3iJIHkSb4qycq2wzllWsmmolaaFVnb+LPV9cIJ/nTud40ZsiiT0H3P+/wXIdbjx2fzF61OaeOQ==
 
-react-image-gallery@^0.8.12:
-  version "0.8.12"
-  resolved "https://registry.yarnpkg.com/react-image-gallery/-/react-image-gallery-0.8.12.tgz#d27f498e28fef03aa80841f18d6ba03379a02517"
-  integrity sha512-jkrsEhRZ3JPxFhLznrwPyAVy/n6HiM204tKBJ1W5z1a8QnWLVVi+j/UXsMETvks4rnSIkAQbW3WPHbrS19nNMQ==
-  dependencies:
-    lodash.debounce "^4.0.8"
-    lodash.throttle "^4.1.1"
-    prop-types "^15.5.8"
-    react-swipeable "^4.2.2"
-    resize-observer-polyfill "^1.5.0"
-
 react-materialize@^2.4.8:
   version "2.4.8"
   resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-2.4.8.tgz#0cc1171c690f530164781940d06a241c0f384610"
@@ -7961,14 +7940,6 @@ react-scripts@2.1.1:
     workbox-webpack-plugin "3.6.3"
   optionalDependencies:
     fsevents "1.2.4"
-
-react-swipeable@^4.2.2:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-4.3.0.tgz#818c0818ac565f5b169348f442153f343abff8bc"
-  integrity sha512-L21VMbcDvG+AOVF4ZIbQ8sICGIgiKB/plGKWBMw6dkxt5neS7x74ZlTbJ39U8slz798MZBv/uIoE9Vzgp3PODQ==
-  dependencies:
-    detect-passive-events "^1.0.4"
-    prop-types "^15.5.8"
 
 react@^16.2.0, react@^16.6.3:
   version "16.6.3"
@@ -8261,11 +8232,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
-
-resize-observer-polyfill@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"
-  integrity sha512-M2AelyJDVR/oLnToJLtuDJRBBWUGUvvGigj1411hXhAdyFWqMaqHp7TixW3FpiLuVaikIcR1QL+zqoJoZlOgpg==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

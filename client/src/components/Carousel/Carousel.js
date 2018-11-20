@@ -3,7 +3,7 @@ import Coverflow from "react-coverflow";
 import { StyleRoot } from "radium";
 import "../styles/Carousel.css";
 
-const MyCarousel = (props) => {
+const Carousel = props => {
   return (
     <StyleRoot>
       <Coverflow
@@ -22,29 +22,17 @@ const MyCarousel = (props) => {
           }
         }}
       >
+      {props.movies.map(movie => 
         <img
-          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
-          alt={`${props.title}`}
-          data-action="https://facebook.github.io/react/"
-        />
-        <img
-          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
-          alt={`${props.title}`}
-          data-action="http://passer.cc"
-        />
-        <img
-          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
-          alt="Album three"
-          data-action="https://doce.cc/"
-        />
-        <img
-          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
-          alt="Album four"
-          data-action="http://tw.yahoo.com"
-        />
+        src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
+        alt={`${movie.title}`}
+        data-action="https://facebook.github.io/react/"
+      />
+      )}
+        
       </Coverflow>
     </StyleRoot>
   );
 };
 
-export default MyCarousel;
+export default Carousel;
