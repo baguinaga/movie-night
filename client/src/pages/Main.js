@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
-// import MovieCard from "../components/MovieCard";
-// import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 
 import "./styles/Main.css";
