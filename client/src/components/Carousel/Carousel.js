@@ -1,51 +1,60 @@
 import React from 'react';
-import ImageGallery from 'react-image-gallery';
+import ReactDOM from 'react-dom';
+import Coverflow from 'react-coverflow';
 
-class MyCarousel extends React.Component {
+class myCarousel extends Component {
+  constructor(props) {
+    super(props);
 
-  constructor() {
-    super();
     this.state = {
-      showIndex: false,
-      showBullets: true,
-      infinite: true,
-      showThumbnails: true,
-      showFullscreenButton: true,
-      showGalleryFullscreenButton: true,
-      showPlayButton: true,
-      showGalleryPlayButton: true,
-      showNav: true,
-      isRTL: false,
-      slideDuration: 450,
-      slideInterval: 2000,
-      thumbnailPosition: 'bottom',
-      showVideo: {},
+      active: 0
     };
   }
 
-
   render() {
-
-    const images = [
-      {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
-
     return (
-      <ImageGallery items={images} />
+      <div>
+        <button onClick={this._handleClick.bind(this)}>Randomize</button>
+        <Coverflow
+          width={960}
+          height={480}
+          displayQuantityOfSide={2}
+          navigation={true}
+          enableHeading={false}
+          active={this.state.active}
+        >
+          <div
+            onClick={() => fn()}
+            onKeyDown={() => fn()}
+            role="menuitem"
+            tabIndex="0"
+          >
+            <img src='images/album-1.png' alt='Album one' />
+          </div>
+          <img src='images/album-2.png' alt='Album two' data-action="http://passer.cc"/>
+          <img src='images/album-3.png' alt='Album three' data-action="https://doce.cc/"/>
+          <img src='images/album-4.png' alt='Album four' data-action="http://tw.yahoo.com"/>
+          <img src='images/album-5.png' alt='Album five' data-action="http://www.bbc.co.uk"/>
+          <img src='images/album-6.png' alt='Album six' data-action="https://medium.com"/>
+          <img src='images/album-7.png' alt='Album seven' data-action="http://www.google.com"/>
+          <img src='images/album-1.png' alt='Album one' data-action="https://facebook.github.io/react/"/>
+          <img src='images/album-2.png' alt='Album two' data-action="http://passer.cc"/>
+          <img src='images/album-3.png' alt='Album three' data-action="https://doce.cc/"/>
+          <img src='images/album-4.png' alt='Album four' data-action="http://tw.yahoo.com"/>
+        </Coverflow>
+      </div>
     );
   }
 
-}
+  _handleClick() {
+    var num = Math.floor((Math.random() * 10) + 1);
+    this.setState({
+      active: num
+    });
+  }
+};
 
-export default MyCarousel;
+ReactDOM.render(
+  <Container></Container>,
+  document.querySelector('.example_4')
+);
