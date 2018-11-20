@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
-
-// import MovieCard from "../components/MovieCard"
+// import MovieCard from "../components/MovieCard";
 // import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import MyCarousel from "../components/Carousel";
@@ -55,7 +54,7 @@ class Main extends Component {
     // }
 
     return (
-      <div>
+      <div className="wrapper">
         <Navbar />
         <MyCarousel />
         {/* {this.state.movies.length ? (this.state.movies.map(movie => {
