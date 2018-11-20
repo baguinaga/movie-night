@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 import API from "../utils/API";
+import "../styles/Main.css";
 import MovieCard from "../components/MovieCard"
 
 
