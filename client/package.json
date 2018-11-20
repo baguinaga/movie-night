@@ -5,7 +5,9 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
+    "radium": "^0.25.0",
     "react": "^16.6.3",
+    "react-coverflow": "^0.2.17",
     "react-dom": "^16.6.3",
     "react-image-gallery": "^0.8.12",
     "react-materialize": "^2.4.8",
