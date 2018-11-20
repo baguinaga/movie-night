@@ -54,7 +54,7 @@ class Main extends Component {
     return (
       <div className="wrapper">
         <Navbar />
-        <Carousel />
+        <Carousel movies={this.state.movies}/>
         {/* {this.state.movies.length ? (this.state.movies.map(movie => {
           return <MovieCard movieImage={movie.poster_path} title={movie.title}/>
         })) : ("No movies found")}  */}
