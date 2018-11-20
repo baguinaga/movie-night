@@ -1,8 +1,9 @@
 import React from "react";
 import Coverflow from "react-coverflow";
 import { StyleRoot } from "radium";
+import "../styles/Carousel.css";
 
-const MyCarousel = () => {
+const MyCarousel = (props) => {
   return (
     <StyleRoot>
       <Coverflow
@@ -22,22 +23,22 @@ const MyCarousel = () => {
         }}
       >
         <img
-          src="images/lightsBG.png"
-          alt="Album one"
+          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
+          alt={`${props.title}`}
           data-action="https://facebook.github.io/react/"
         />
         <img
-          src="images/lightsBG.png"
-          alt="Album two"
+          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
+          alt={`${props.title}`}
           data-action="http://passer.cc"
         />
         <img
-          src="images/lightsBG.png"
+          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
           alt="Album three"
           data-action="https://doce.cc/"
         />
         <img
-          src="images/lightsBG.png"
+          src={`http://image.tmdb.org/t/p/original/${props.movieImage}`}
           alt="Album four"
           data-action="http://tw.yahoo.com"
         />

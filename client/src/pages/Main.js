@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
-// import MovieCard from "../components/MovieCard";
-// import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 import MyCarousel from "../components/Carousel";
 import "./styles/Main.css";
@@ -57,9 +55,9 @@ class Main extends Component {
       <div className="wrapper">
         <Navbar />
         <MyCarousel />
-        {/* {this.state.movies.length ? (this.state.movies.map(movie => {
-          return <MovieCard movieImage={movie.poster_path} title={movie.title}/>
-        })) : ("No movies found")}  */}
+        {this.state.movies.length ? (this.state.movies.map(movie => {
+          return <MyCarousel movieImage={movie.poster_path} title={movie.title}/>
+        })) : ("No movies found")} 
       </div>
     );
   }
