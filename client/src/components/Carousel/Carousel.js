@@ -1,51 +1,50 @@
-import React from 'react';
-import ImageGallery from 'react-image-gallery';
+import React from "react";
+import Coverflow from "react-coverflow";
+import { StyleRoot } from "radium";
 
-class MyCarousel extends React.Component {
+const Carousel = (props) => {
+  return (
+    <StyleRoot>
+      <Coverflow
+        displayQuantityOfSide={2}
+        navigation
+        infiniteScroll
+        enableHeading
+        media={{
+          "@media (max-width: 900px)": {
+            width: "600px",
+            height: "300px"
+          },
+          "@media (min-width: 900px)": {
+            width: "960px",
+            height: "600px"
+          }
+        }}
+      >
+        {console.log(props)}
+        <img
+          src="images/lightsBG.png"
+          alt="Album one"
+          data-action="https://facebook.github.io/react/"
+        />
+        <img
+          src="images/lightsBG.png"
+          alt="Album two"
+          data-action="http://passer.cc"
+        />
+        <img
+          src="images/lightsBG.png"
+          alt="Album three"
+          data-action="https://doce.cc/"
+        />
+        <img
+          src="images/lightsBG.png"
+          alt="Album four"
+          data-action="http://tw.yahoo.com"
+        />
+      </Coverflow>
+    </StyleRoot>
+  );
+};
 
-  constructor() {
-    super();
-    this.state = {
-      showIndex: false,
-      showBullets: true,
-      infinite: true,
-      showThumbnails: true,
-      showFullscreenButton: true,
-      showGalleryFullscreenButton: true,
-      showPlayButton: true,
-      showGalleryPlayButton: true,
-      showNav: true,
-      isRTL: false,
-      slideDuration: 450,
-      slideInterval: 2000,
-      thumbnailPosition: 'bottom',
-      showVideo: {},
-    };
-  }
-
-
-  render() {
-
-    const images = [
-      {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
-
-    return (
-      <ImageGallery items={images} />
-    );
-  }
-
-}
-
-export default MyCarousel;
+export default Carousel;
