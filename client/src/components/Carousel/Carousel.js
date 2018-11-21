@@ -22,14 +22,13 @@ const Carousel = props => {
           }
         }}
       >
-      {props.movies.map(movie => 
-        <img
-        src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
-        alt={`${movie.title}`}
-        data-action="https://facebook.github.io/react/"
-      />
-      )}
-        
+        {props.movies.map(movie => (
+          <img
+            src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
+            alt={`${movie.title}`}
+            data-action="https://facebook.github.io/react/"
+          />
+        ))}
       </Coverflow>
     </StyleRoot>
   );
