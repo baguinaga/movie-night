@@ -16,13 +16,15 @@ const styles = theme => ({
   root: {
     width: "100%"
   },
-  Login: {
+  login: {
     marginLeft: 20,
+    color: "white",
   },
 
-  Signup: {
+  signup: {
+    color: "white",
     marginLeft: -10,
-    marginRight: 20,
+    marginRight: 20
   },
 
   grow: {
@@ -32,6 +34,9 @@ const styles = theme => ({
     marginLeft: -12
   },
   title: {
+    fontFamily: "'Cinzel', serif;",
+    fontSize: 45,
+    color: "white",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
@@ -64,9 +69,11 @@ const styles = theme => ({
   },
   inputRoot: {
     color: "inherit",
-    width: "100%"
+    width: "100%",
+    fontFamily: "'Lato', sans-serif;"
   },
   inputInput: {
+    fontFamily: "'Lato', sans-serif;",
     paddingTop: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
@@ -86,7 +93,7 @@ function SearchAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar>
           <div className="appTitle">
             <Typography
@@ -111,12 +118,16 @@ function SearchAppBar(props) {
               }}
             />
           </div>
-          <div className={classes.Login}>
-            <Button>Log In</Button>
-          </div>
-          <div className={classes.Signup}>
-            <Button>Sign Up</Button>
-          </div>
+          <Typography>
+            <div className={classes.login}>
+              <Button>Log In</Button>
+            </div>
+          </Typography>
+          <Typography>
+            <div className={classes.signup}>
+              <Button>Sign Up</Button>
+            </div>
+          </Typography>
           <IconButton
             className={classes.menuButton}
             color="inherit"
