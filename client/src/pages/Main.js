@@ -54,6 +54,7 @@ class Main extends Component {
     return (
       <div className="wrapper">
         <SearchAppBar />
+        <br />
         <Carousel movies={this.state.movies}/>
       </div>
     );

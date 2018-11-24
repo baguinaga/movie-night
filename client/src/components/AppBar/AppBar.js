@@ -16,6 +16,15 @@ const styles = theme => ({
   root: {
     width: "100%"
   },
+  Login: {
+    marginLeft: 20,
+  },
+
+  Signup: {
+    marginLeft: -10,
+    marginRight: 20,
+  },
+
   grow: {
     flexGrow: 1
   },
@@ -30,7 +39,8 @@ const styles = theme => ({
   },
   search: {
     position: "relative",
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: 10,
+    height: 45,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25)
@@ -49,7 +59,8 @@ const styles = theme => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginLeft: -60
   },
   inputRoot: {
     color: "inherit",
@@ -65,7 +76,7 @@ const styles = theme => ({
     [theme.breakpoints.up("sm")]: {
       width: 120,
       "&:focus": {
-        width: 200
+        width: "100%"
       }
     }
   }
@@ -78,7 +89,6 @@ function SearchAppBar(props) {
       <AppBar position="static">
         <Toolbar>
           <div className="appTitle">
-          
             <Typography
               className={classes.title}
               variant="h6"
@@ -101,8 +111,10 @@ function SearchAppBar(props) {
               }}
             />
           </div>
-          <div className={classes.accButtons}>
+          <div className={classes.Login}>
             <Button>Log In</Button>
+          </div>
+          <div className={classes.Signup}>
             <Button>Sign Up</Button>
           </div>
           <IconButton
