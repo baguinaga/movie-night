@@ -99,29 +99,15 @@ class Main extends Component {
       <div className="wrapper">
         <PrimaryAppBar />
         <br />
-        <TextField
-          className="textField"
-          id="filled-full-width"
-          label="Search for a movie!"
-          style={{ margin: 8, color: "#ffffff" }}
-          placeholder="Placeholder"
-          margin="normal"
-          variant="filled"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <Carousel movies={this.state.movies} />
         <div>
           <form onSubmit={this.handleFormSubmit}>
             <TextField
-              id="filled-full-width"
+              id="movieInput"
+              className="textField"
               name="search"
-              label="Label"
+              label="Search for a movie!"
               style={{ margin: 8 }}
-              placeholder="Placeholder"
-              helperText="Full width!"
-              fullWidth
+              placeholder="Movie Title"
               margin="normal"
               variant="filled"
               InputLabelProps={{
