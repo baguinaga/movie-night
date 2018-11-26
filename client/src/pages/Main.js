@@ -1,24 +1,22 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Coverflow from "react-coverflow";
-<<<<<<< HEAD
-=======
-import PrimaryAppBar from "../components/PrimaryAppBar";
-import Button from "@material-ui/core/Button";
-import "./styles/Main.css";
-
-//movie modal
-// import PropTypes from "prop-types";
-// import { withStyles } from "@material-ui/core/styles";
-// import Typography from "@material-ui/core/Typography";
-import Modal from "@material-ui/core/Modal";
+// import PrimaryAppBar from "../components/PrimaryAppBar";
 // import Button from "@material-ui/core/Button";
+import "./styles/Main.css";
 
 // Text field
->>>>>>> cc82d204d69287d829e3aeab88a3827487485fe5
 import TextField from "@material-ui/core/TextField";
-import Modal from "@material-ui/core/Modal";
 import "./styles/Main.css";
+
+//dialog
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+// import Slide from '@material-ui/core/Slide';
 
 //Main Page
 class Main extends Component {
@@ -65,7 +63,9 @@ class Main extends Component {
     }
   };
 
-  handleOpen = () => {
+  //dialog
+
+  handleClickOpen = () => {
     this.setState({ open: true });
   };
 
@@ -115,7 +115,7 @@ class Main extends Component {
               margin="normal"
               variant="filled"
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
               onChange={this.handleInputChange}
             />
@@ -135,24 +135,39 @@ class Main extends Component {
                 key={i}
                 src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={`${movie.title}`}
-                onClick={this.handleOpen}
+                onClick={this.handleClickOpen}
               />
             ))}
           </Coverflow>
         </div>
-        <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-          style={{ alignItems: "center", justifyContent: "center"}}
-        >
-          <div className="movieModal">
-            <h1>The modal is working</h1>
-            <Button onClick={this.handleClose}>Close</Button>
-          </div>
-          
-        </Modal>
+        <div>
+          <Dialog
+            open={this.state.open}
+            keepMounted
+            onClose={this.handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+          >
+            <DialogTitle id="alert-dialog-slide-title">
+              {"Use Google's location service?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-slide-description">
+                Let Google help apps determine location. This means sending
+                anonymous location data to Google, even when no apps are
+                running.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleClose} color="primary">
+                Disagree
+              </Button>
+              <Button onClick={this.handleClose} color="primary">
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
       </div>
     );
   }
