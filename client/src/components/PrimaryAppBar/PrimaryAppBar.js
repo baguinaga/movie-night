@@ -187,38 +187,18 @@ class PrimaryAppBar extends Component {
                 <Login />
                 Login
               </Button>
-              {/* <IconButton
-                aria-owns={isMenuOpen ? "material-appbar" : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <Login />
-                <Typography
-                  className={classes.title}
-                  variant="button"
-                  color="inherit"
-                  noWrap
-                >
-                  Login
-                </Typography>
-              </IconButton> */}
               {/* Register */}
-              <IconButton
-                aria-owns={isMenuOpen ? "material-appbar" : undefined}
-                aria-haspopup="true"
-                color="inherit"
+              <Button
+                variant="outlined"
+                component={Link}
+                to="/register"
+                color="primary"
+                className={classes.button}
+                // onClick={props.handleFormSubmit}
               >
                 <PersonAdd />
-                <Typography
-                  className={classes.title}
-                  variant="button"
-                  color="inherit"
-                  noWrap
-                >
-                  Register
-                </Typography>
-              </IconButton>
+                Register
+              </Button>
               {/* Account Profile */}
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
