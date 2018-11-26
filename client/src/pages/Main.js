@@ -6,88 +6,89 @@ import SimpleModalWrapped from "../components/Modal";
 import "./styles/Main.css";
 
 //movie modal
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Modal from "@material-ui/core/Modal";
-import Button from "@material-ui/core/Button";
+// import PropTypes from "prop-types";
+// import { withStyles } from "@material-ui/core/styles";
+// import Typography from "@material-ui/core/Typography";
+// import Modal from "@material-ui/core/Modal";
+// import Button from "@material-ui/core/Button";
 
-//movie modal
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+// Text field
+import TextField from "@material-ui/core/TextField";
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+// //movie modal
+// function rand() {
+//   return Math.round(Math.random() * 20) - 10;
+// }
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
-  };
-}
+// function getModalStyle() {
+//   const top = 50 + rand();
+//   const left = 50 + rand();
 
-const styles = theme => ({
-  paper: {
-    position: "absolute",
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4
-  }
-});
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
+//     transform: `translate(-${top}%, -${left}%)`
+//   };
+// }
 
-class SimpleModal extends React.Component {
-  state = {
-    open: false
-  };
+// const styles = theme => ({
+//   paper: {
+//     position: "absolute",
+//     width: theme.spacing.unit * 50,
+//     backgroundColor: theme.palette.background.paper,
+//     boxShadow: theme.shadows[5],
+//     padding: theme.spacing.unit * 4
+//   }
+// });
 
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
+// class SimpleModal extends React.Component {
+//   state = {
+//     open: false
+//   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+//   handleOpen = () => {
+//     this.setState({ open: true });
+//   };
 
-  render() {
-    const { classes } = this.props;
+//   handleClose = () => {
+//     this.setState({ open: false });
+//   };
 
-    return (
-      <div>
-        <Typography gutterBottom>
-          Click to get the full Modal experience!
-        </Typography>
-        <Button onClick={this.handleOpen}>Open Modal</Button>
-        <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
-          <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="h6" id="modal-title">
-              Text in a modal
-            </Typography>
-            <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-            <SimpleModalWrapped />
-          </div>
-        </Modal>
-      </div>
-    );
-  }
-}
+//   render() {
+//     const { classes } = this.props;
 
-SimpleModal.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+//     return (
+//       <div>
+//         <Typography gutterBottom>
+//           Click to get the full Modal experience!
+//         </Typography>
+//         <Button onClick={this.handleOpen}>Open Modal</Button>
+//         <Modal
+//           aria-labelledby="simple-modal-title"
+//           aria-describedby="simple-modal-description"
+//           open={this.state.open}
+//           onClose={this.handleClose}
+//         >
+//           <div style={getModalStyle()} className={classes.paper}>
+//             <Typography variant="h6" id="modal-title">
+//               Text in a modal
+//             </Typography>
+//             <Typography variant="subtitle1" id="simple-modal-description">
+//               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+//             </Typography>
+//             <SimpleModalWrapped />
+//           </div>
+//         </Modal>
+//       </div>
+//     );
+//   }
+// }
 
-const SimpleModalWrapped = withStyles(styles)(SimpleModal);
+// SimpleModal.propTypes = {
+//   classes: PropTypes.object.isRequired
+// };
 
-
+// const SimpleModalWrapped = withStyles(styles)(SimpleModal);
 
 //main
 class Main extends Component {
@@ -151,7 +152,22 @@ class Main extends Component {
       <div className="wrapper">
         <PrimaryAppBar />
         <br />
-        <Carousel movies={this.state.movies} />
+        <div>
+          <TextField
+            id="filled-full-width"
+            label="Label"
+            style={{ margin: 8 }}
+            placeholder="Placeholder"
+            helperText="Full width!"
+            fullWidth
+            margin="normal"
+            variant="filled"
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <Carousel movies={this.state.movies} />
+        </div>
         <SimpleModalWrapped />
       </div>
     );
