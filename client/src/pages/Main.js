@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Coverflow from "react-coverflow";
+<<<<<<< HEAD
+=======
+import PrimaryAppBar from "../components/PrimaryAppBar";
+import Button from "@material-ui/core/Button";
+import "./styles/Main.css";
+
+//movie modal
+// import PropTypes from "prop-types";
+// import { withStyles } from "@material-ui/core/styles";
+// import Typography from "@material-ui/core/Typography";
+import Modal from "@material-ui/core/Modal";
+// import Button from "@material-ui/core/Button";
+
+// Text field
+>>>>>>> cc82d204d69287d829e3aeab88a3827487485fe5
 import TextField from "@material-ui/core/TextField";
 import Modal from "@material-ui/core/Modal";
 import "./styles/Main.css";
@@ -100,7 +115,7 @@ class Main extends Component {
               margin="normal"
               variant="filled"
               InputLabelProps={{
-                shrink: true
+                shrink: true,
               }}
               onChange={this.handleInputChange}
             />
@@ -130,11 +145,13 @@ class Main extends Component {
           aria-describedby="simple-modal-description"
           open={this.state.open}
           onClose={this.handleClose}
-          style={{ alignItems: "center", justifyContent: "center" }}
+          style={{ alignItems: "center", justifyContent: "center"}}
         >
-          <div>
+          <div className="movieModal">
             <h1>The modal is working</h1>
+            <Button onClick={this.handleClose}>Close</Button>
           </div>
+          
         </Modal>
       </div>
     );
