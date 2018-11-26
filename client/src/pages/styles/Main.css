@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel:700');
+
 html,
 body {
   height: 100%;
@@ -35,3 +37,24 @@ body {
   color: #fff;
   padding: 0.5em;
 }
+
+input {
+  color: white !important;
+} 
+
+label {
+  color: white !important;
+}
+
+/* textfield */
+.textField {
+  color:white;
+  width: 30%;
+  background: transparent;
+  position: relative;
+  left: 500px;
+  border: 1px solid #727272 !important;
+}
+ .MuiFormLabel-root-124{ 
+   color: gray;
+ }

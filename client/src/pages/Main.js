@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Carousel from "../components/Carousel";
 import PrimaryAppBar from "../components/PrimaryAppBar";
-import SimpleModalWrapped from "../components/Modal";
+// import SimpleModalWrapped from "../components/Modal";
 import "./styles/Main.css";
 
 //movie modal
@@ -152,23 +152,19 @@ class Main extends Component {
       <div className="wrapper">
         <PrimaryAppBar />
         <br />
-        <div>
-          <TextField
-            id="filled-full-width"
-            label="Label"
-            style={{ margin: 8 }}
-            placeholder="Placeholder"
-            helperText="Full width!"
-            fullWidth
-            margin="normal"
-            variant="filled"
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-          <Carousel movies={this.state.movies} />
-        </div>
-        <SimpleModalWrapped />
+        <TextField
+          className="textField"
+          id="filled-full-width"
+          label="Search for a movie!"
+          style={{ margin: 8, color: "#ffffff" }}
+          placeholder="Placeholder"
+          margin="normal"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <Carousel movies={this.state.movies} />
       </div>
     );
   }

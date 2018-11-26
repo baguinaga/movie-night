@@ -34,6 +34,7 @@ const styles = theme => ({
     marginRight: 20
   },
   title: {
+    fontFamily: 'Cinzel',
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
