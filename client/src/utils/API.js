@@ -24,5 +24,22 @@ export default {
   // returns trending movies, during the week, from movied
   movieTrend: function() {
     return axios.get("/api/movies/trending/");
-  }
+  },
+
+  //crud
+  getSavedMovies: function() {
+    return axios.get('/api/movies')
+  },
+  getMovieById: function(movieId) {
+    return axios.get(`/api/movies/${movieId}`)
+  },
+  saveMovie: function(movieData) {
+    return axios.post('/api/movies', movieData)
+  },
+  updateMovie: function(movieId, movieData) {
+    return axios.put(`/api/movies/${movieId}`, movieData)
+  },
+  deleteMovie: function(movieId) {
+    return axios.delete(`/api/movies/${movieId}`)
+  },
 };
