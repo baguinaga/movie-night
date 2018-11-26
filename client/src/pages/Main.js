@@ -152,6 +152,7 @@ class Main extends Component {
         <PrimaryAppBar />
         <br />
         <Carousel movies={this.state.movies} />
+        <SimpleModalWrapped />
       </div>
     );
   }
