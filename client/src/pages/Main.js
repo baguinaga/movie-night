@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Carousel from "../components/Carousel";
+import AppBar from "../components/AppBar";
 import "./styles/Main.css";
 
 class Main extends Component {
   state = {
     isLoggedIn: true,
-    username: "",
-    movies: []
+    username: ""
   };
 
   // Check login status on load
@@ -45,10 +45,8 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <Carousel movies={this.state.movies}/>
-        {/* {this.state.movies.length ? (this.state.movies.map(movie => {
-          return <MovieCard movieImage={movie.poster_path} title={movie.title}/>
-        })) : ("No movies found")}  */}
+        <AppBar />
+        <Carousel />
       </div>
     );
   }
