@@ -1,20 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Coverflow from "react-coverflow";
-import PrimaryAppBar from "../components/PrimaryAppBar";
+import TextField from "@material-ui/core/TextField";
+import Modal from "@material-ui/core/Modal";
 import "./styles/Main.css";
 
-//movie modal
-// import PropTypes from "prop-types";
-// import { withStyles } from "@material-ui/core/styles";
-// import Typography from "@material-ui/core/Typography";
-import Modal from "@material-ui/core/Modal";
-// import Button from "@material-ui/core/Button";
-
-// Text field
-import TextField from "@material-ui/core/TextField";
-
-//main
+//Main Page
 class Main extends Component {
   state = {
     movies: [],
@@ -97,8 +88,6 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <PrimaryAppBar />
-        <br />
         <div>
           <form onSubmit={this.handleFormSubmit}>
             <TextField
@@ -131,6 +120,7 @@ class Main extends Component {
                 key={i}
                 src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={`${movie.title}`}
+                onClick={this.handleOpen}
               />
             ))}
           </Coverflow>

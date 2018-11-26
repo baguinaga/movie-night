@@ -188,7 +188,6 @@ class PrimaryAppBar extends Component {
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
                 <PersonAdd />
