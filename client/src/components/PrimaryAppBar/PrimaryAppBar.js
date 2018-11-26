@@ -20,6 +20,15 @@ const styles = theme => ({
   root: {
     width: "100%"
   },
+  login: {
+    marginLeft: 20,
+    color: "white"
+  },
+  signup: {
+    color: "white",
+    marginLeft: -10,
+    marginRight: 20
+  },
   grow: {
     flexGrow: 1
   },
@@ -34,7 +43,7 @@ const styles = theme => ({
     }
   },
   typography: {
-    useNextVariants: true,
+    useNextVariants: true
   },
   search: {
     position: "relative",
@@ -99,9 +108,9 @@ class PrimaryAppBar extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name] : value
-    })
-  }
+      [name]: value
+    });
+  };
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -135,7 +144,8 @@ class PrimaryAppBar extends Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}
+        >My account</MenuItem>
       </Menu>
     );
 
@@ -170,7 +180,10 @@ class PrimaryAppBar extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar
+          position="static"
+          style={{ background: "transparent", boxShadow: "none" }}
+        >
           <Toolbar>
             <IconButton
               className={classes.menuButton}

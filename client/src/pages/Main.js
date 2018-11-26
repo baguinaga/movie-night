@@ -46,6 +46,7 @@ class Main extends Component {
     return (
       <div className="wrapper">
         <PrimaryAppBar />
+        <br />
         <Carousel />
       </div>
     );
