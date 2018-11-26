@@ -99,15 +99,15 @@ class Main extends Component {
       <div className="wrapper">
         <PrimaryAppBar />
         <br />
-
         <div>
           <form onSubmit={this.handleFormSubmit}>
             <TextField
+              id="movieInput"
               className="textField"
-              id="filled-full-width"
+              name="search"
               label="Search for a movie!"
-              style={{ margin: 8, color: "#ffffff" }}
-              placeholder="Placeholder"
+              style={{ margin: 8 }}
+              placeholder="Movie Title"
               margin="normal"
               variant="filled"
               InputLabelProps={{
