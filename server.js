@@ -22,7 +22,7 @@ app.use(morgan("dev")); // for logging
 
 // We need to use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  session({ secret: "super secret", resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,5 +46,5 @@ mongoose.connect(
 
 // Start the API server
 app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  console.log(`App is running on http://localhost:${PORT}!`);
 });

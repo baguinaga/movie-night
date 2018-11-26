@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import SearchAppBar from "../components/AppBar";
 import API from "../utils/API";
 import Carousel from "../components/Carousel";
+import PrimaryAppBar from "../components/PrimaryAppBar";
 import "./styles/Main.css";
 
 class Main extends Component {
   state = {
     isLoggedIn: true,
-    username: "",
-    movies: []
+    username: ""
   };
 
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
-    this.trendingMovies();
   }
 
   // Check login status
@@ -32,12 +30,6 @@ class Main extends Component {
       });
   };
 
-  trendingMovies = () => {
-    API.movieTrend().then(({ data }) => {
-      this.setState({ movies: data });
-    });
-  };
-
   //Testing OMBD API function/route
   // movieDetails = movieTitle => {
   //   API.movieInfo(movieTitle)
@@ -53,9 +45,9 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <SearchAppBar />
+        <PrimaryAppBar />
         <br />
-        <Carousel movies={this.state.movies}/>
+        <Carousel />
       </div>
     );
   }

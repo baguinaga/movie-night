@@ -1,37 +1,47 @@
-import React from "react";
+import React, { Component } from "react";
 import Coverflow from "react-coverflow";
-import { StyleRoot } from "radium";
+import API from "../../utils/API";
 import "../styles/Carousel.css";
 
-const Carousel = props => {
-  return (
-    <StyleRoot>
+class Carousel extends Component {
+  state = {
+    movies: [],
+    active: 0
+  };
+
+  componentDidMount() {
+    this.trendingMovies();
+  }
+
+  trendingMovies = () => {
+    API.movieTrend().then(({ data }) => {
+      this.setState({ movies: data });
+    });
+  };
+
+  render() {
+    return (
       <Coverflow
+        className="carousel"
+        width={960}
+        height={480}
+        active={this.state.active}
         displayQuantityOfSide={2}
         navigation
         infiniteScroll
         enableHeading
-        media={{
-          "@media (max-width: 900px)": {
-            width: "600px",
-            height: "300px"
-          },
-          "@media (min-width: 900px)": {
-            width: "960px",
-            height: "600px"
-          }
-        }}
       >
-        {props.movies.map(movie => (
+        {this.state.movies.map((movie, i) => (
           <img
+            key={i}
             src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
             alt={`${movie.title}`}
             data-action="https://facebook.github.io/react/"
           />
         ))}
       </Coverflow>
-    </StyleRoot>
-  );
-};
+    );
+  }
+}
 
 export default Carousel;

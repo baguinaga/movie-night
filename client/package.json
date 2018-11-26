@@ -1,5 +1,5 @@
 {
-  "name": "fresher_tomatoes",
+  "name": "movie-night",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
@@ -12,7 +12,8 @@
     "react-coverflow": "^0.2.17",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "typeface-roboto": "^0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",
