@@ -92,6 +92,7 @@ const SimpleModalWrapped = withStyles(styles)(SimpleModal);
 //main
 class Main extends Component {
   state = {
+    movies: [],
     isLoggedIn: true,
     username: ""
   };
@@ -99,6 +100,7 @@ class Main extends Component {
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
+    this.trendingMovies();
   }
 
   // Check login status
@@ -116,6 +118,21 @@ class Main extends Component {
       });
   };
 
+  // Taking user input from the searchbar
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  //getting trending movies from server-side call
+  trendingMovies = () => {
+    API.movieTrend().then(({ data }) => {
+      this.setState({ movies: data });
+    });
+  };
+
   //Testing OMBD API function/route
   // movieDetails = movieTitle => {
   //   API.movieInfo(movieTitle)
@@ -124,6 +141,7 @@ class Main extends Component {
   // };
 
   render() {
+    // Reference for checking if user is logged in
     // If user isn't logged in, don't let them see this page
     // if (!this.state.isLoggedIn) {
     //   return <Redirect to="/login" />;
@@ -133,8 +151,7 @@ class Main extends Component {
       <div className="wrapper">
         <PrimaryAppBar />
         <br />
-        <Carousel />
-        <SimpleModalWrapped />
+        <Carousel movies={this.state.movies} />
       </div>
     );
   }

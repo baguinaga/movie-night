@@ -4,13 +4,10 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 import Login from "@material-ui/icons/Input";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -45,30 +42,6 @@ const styles = theme => ({
   typography: {
     useNextVariants: true
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
-    },
-    marginRight: theme.spacing.unit * 2,
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing.unit * 3,
-      width: "auto"
-    }
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
   inputRoot: {
     color: "inherit",
     width: "100%"
@@ -101,15 +74,7 @@ const styles = theme => ({
 class PrimaryAppBar extends Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null,
-    search: ""
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    mobileMoreAnchorEl: null
   };
 
   handleProfileMenuOpen = event => {
@@ -144,8 +109,7 @@ class PrimaryAppBar extends Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}
-        >My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
       </Menu>
     );
 
@@ -185,12 +149,14 @@ class PrimaryAppBar extends Component {
           style={{ background: "transparent", boxShadow: "none" }}
         >
           <Toolbar>
+            {/* Menu Button */}
             <IconButton
               className={classes.menuButton}
               color="inherit"
               aria-label="Open drawer"
             >
               <MenuIcon />
+              {/* Title */}
             </IconButton>
             <Typography
               className={classes.title}
@@ -200,18 +166,6 @@ class PrimaryAppBar extends Component {
             >
               MovieNight
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search for movies"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
-            </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton
