@@ -1,5 +1,5 @@
 {
-  "name": "fresher_tomatoes",
+  "name": "movie-night",
   "version": "0.1.0",
   "description": "",
   "main": "server.js",
@@ -30,7 +30,6 @@
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1",
-    "react-image-gallery": "^0.8.12"
+    "passport-local-mongoose": "^5.0.1"
   }
 }

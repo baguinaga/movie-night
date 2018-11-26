@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navbar from "../components/Navbar";
 import API from "../utils/API";
 import Carousel from "../components/Carousel";
 import "./styles/Main.css";
@@ -14,7 +13,6 @@ class Main extends Component {
   // Check login status on load
   componentDidMount() {
     this.loginCheck();
-    this.trendingMovies();
   }
 
   // Check login status
@@ -32,12 +30,6 @@ class Main extends Component {
       });
   };
 
-  trendingMovies = () => {
-    API.movieTrend().then(({ data }) => {
-      this.setState({ movies: data });
-    });
-  };
-
   //Testing OMBD API function/route
   // movieDetails = movieTitle => {
   //   API.movieInfo(movieTitle)
@@ -53,7 +45,6 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <Navbar />
         <Carousel movies={this.state.movies}/>
         {/* {this.state.movies.length ? (this.state.movies.map(movie => {
           return <MovieCard movieImage={movie.poster_path} title={movie.title}/>
