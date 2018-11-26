@@ -1,9 +1,25 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Coverflow from "react-coverflow";
-import TextField from "@material-ui/core/TextField";
-import Modal from "@material-ui/core/Modal";
+<<<<<<< HEAD
+=======
+// import PrimaryAppBar from "../components/PrimaryAppBar";
+// import Button from "@material-ui/core/Button";
 import "./styles/Main.css";
+
+// Text field
+>>>>>>> 1ff9c0234012e54d66d10d78b2b216f6e4982dfd
+import TextField from "@material-ui/core/TextField";
+import "./styles/Main.css";
+
+//dialog
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+// import Slide from '@material-ui/core/Slide';
 
 //Main Page
 class Main extends Component {
@@ -50,7 +66,9 @@ class Main extends Component {
     }
   };
 
-  handleOpen = () => {
+  //dialog
+
+  handleClickOpen = () => {
     this.setState({ open: true });
   };
 
@@ -120,11 +138,12 @@ class Main extends Component {
                 key={i}
                 src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={`${movie.title}`}
-                onClick={this.handleOpen}
+                onClick={this.handleClickOpen}
               />
             ))}
           </Coverflow>
         </div>
+<<<<<<< HEAD
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -137,6 +156,36 @@ class Main extends Component {
             <Button onClick={this.handleClose}>Close</Button>
           </div>
         </Modal>
+=======
+        <div>
+          <Dialog
+            open={this.state.open}
+            keepMounted
+            onClose={this.handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+          >
+            <DialogTitle id="alert-dialog-slide-title">
+              {"Use Google's location service?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-slide-description">
+                Let Google help apps determine location. This means sending
+                anonymous location data to Google, even when no apps are
+                running.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleClose} color="primary">
+                Disagree
+              </Button>
+              <Button onClick={this.handleClose} color="primary">
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+>>>>>>> 1ff9c0234012e54d66d10d78b2b216f6e4982dfd
       </div>
     );
   }
