@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Carousel from "../components/Carousel";
-import AppBar from "../components/AppBar";
+import PrimaryAppBar from "../components/PrimaryAppBar";
 import "./styles/Main.css";
 
 class Main extends Component {
@@ -45,7 +45,7 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <AppBar />
+        <PrimaryAppBar />
         <Carousel />
       </div>
     );
