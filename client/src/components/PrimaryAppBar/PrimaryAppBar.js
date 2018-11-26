@@ -33,6 +33,9 @@ const styles = theme => ({
       display: "block"
     }
   },
+  typography: {
+    useNextVariants: true,
+  },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -89,8 +92,16 @@ const styles = theme => ({
 class PrimaryAppBar extends Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    search: ""
   };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name] : value
+    })
+  }
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
