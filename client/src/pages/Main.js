@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Coverflow from "react-coverflow";
+<<<<<<< HEAD
+=======
 import PrimaryAppBar from "../components/PrimaryAppBar";
 import Button from "@material-ui/core/Button";
 import "./styles/Main.css";
@@ -13,9 +15,12 @@ import Modal from "@material-ui/core/Modal";
 // import Button from "@material-ui/core/Button";
 
 // Text field
+>>>>>>> cc82d204d69287d829e3aeab88a3827487485fe5
 import TextField from "@material-ui/core/TextField";
+import Modal from "@material-ui/core/Modal";
+import "./styles/Main.css";
 
-//main
+//Main Page
 class Main extends Component {
   state = {
     movies: [],
@@ -98,8 +103,6 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <PrimaryAppBar />
-        <br />
         <div>
           <form onSubmit={this.handleFormSubmit}>
             <TextField

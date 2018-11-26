@@ -12,6 +12,9 @@ import Login from "@material-ui/icons/Input";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
+// button and link from react-router-dom
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -34,7 +37,7 @@ const styles = theme => ({
     marginRight: 20
   },
   title: {
-    fontFamily: 'Cinzel',
+    fontFamily: "Cinzel",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
@@ -101,6 +104,7 @@ class PrimaryAppBar extends Component {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+    // Dropdown menu (Account Circle)
     const renderMenu = (
       <Menu
         anchorEl={anchorEl}
@@ -114,6 +118,7 @@ class PrimaryAppBar extends Component {
       </Menu>
     );
 
+    // Collapsed downdown menu for mobile
     const renderMobileMenu = (
       <Menu
         anchorEl={mobileMoreAnchorEl}
@@ -150,15 +155,16 @@ class PrimaryAppBar extends Component {
           style={{ background: "transparent", boxShadow: "none" }}
         >
           <Toolbar>
-            {/* Menu Button */}
+            {/* Menu Button, should remove*/}
             <IconButton
               className={classes.menuButton}
               color="inherit"
               aria-label="Open drawer"
             >
               <MenuIcon />
-              {/* Title */}
             </IconButton>
+
+            {/* Project Title */}
             <Typography
               className={classes.title}
               variant="h6"
@@ -169,7 +175,19 @@ class PrimaryAppBar extends Component {
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton
+              {/* Login */}
+              <Button
+                variant="outlined"
+                component={Link}
+                to="/login"
+                color="primary"
+                className={classes.button}
+                // onClick={props.handleFormSubmit}
+              >
+                <Login />
+                Login
+              </Button>
+              {/* <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
                 onClick={this.handleProfileMenuOpen}
@@ -184,11 +202,11 @@ class PrimaryAppBar extends Component {
                 >
                   Login
                 </Typography>
-              </IconButton>
+              </IconButton> */}
+              {/* Register */}
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
                 <PersonAdd />
@@ -201,6 +219,7 @@ class PrimaryAppBar extends Component {
                   Register
                 </Typography>
               </IconButton>
+              {/* Account Profile */}
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"

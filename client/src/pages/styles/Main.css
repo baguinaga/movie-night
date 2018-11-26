@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel:700');
 
+/* full-image background wrapper */
 html,
 body {
   height: 100%;
@@ -24,6 +25,7 @@ body {
   width: 100%;
 }
 
+/* example class for styling modal */
 .message {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -38,6 +40,8 @@ body {
   padding: 0.5em;
 }
 
+/* textfield */
+
 input {
   color: white !important;
 } 
@@ -46,7 +50,6 @@ label {
   color: white !important;
 }
 
-/* textfield */
 .textField {
   color:white;
   width: 30%;

@@ -25,8 +25,7 @@ export default {
   movieTrend: function() {
     return axios.get("/api/movies/trending/");
   },
-
-  //crud
+  // Saving movies to playlist CRUD methods
   getSavedMovies: function() {
     return axios.get('/api/movies')
   },
