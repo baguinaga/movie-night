@@ -37,13 +37,41 @@ const styles = theme => ({
   notchedOutline: {
     borderColor: "white !important"
   },
+//dialog
   container: {
-    textAlign: "center"
+    textAlign: "center",
+  },
+  dialog: {
+    background: "rgba(50,50,50,0.55) !important"
   },
   moviePoster: {
-    width: "100%",
+    width: "40%",
     maxWidth: "400px",
-    height: "auto"
+    height: "auto",
+    float: "left"
+  },
+  overview: {
+    textAlign: "left",
+    position: "relative",
+    left: 10
+  },
+  rate: {
+    textAlign: "left",
+    position: "relative",
+    left: 10,
+    paddingTop: 20
+  },
+  release: {
+    textAlign: "left",
+    paddingTop: 40,
+    position: "relative",
+    left: 10
+  },
+  title: {
+    fontFamily: "Cinzel",
+    textAlign: "center",
+    fontSize: 30,
+    borderBottom: "1px solid black"
   }
 });
 
@@ -205,8 +233,9 @@ class Main extends Component {
           ))}
         </Coverflow>
 
-        <div>
+        <div >
           <Dialog
+            className={classes.dialog}
             open={this.state.open}
             keepMounted
             onClose={this.handleClose}
@@ -214,7 +243,7 @@ class Main extends Component {
             aria-describedby="alert-dialog-slide-description"
           >
             <DialogTitle id="alert-dialog-slide-title">
-              <Typography variant="title">
+              <Typography className={classes.title} variant="title">
                 {this.state.activeMovieInfo.title}
               </Typography>
             </DialogTitle>
@@ -227,8 +256,16 @@ class Main extends Component {
                 alt={this.state.activeMovieInfo.title}
               />
 
-              <Typography variant="body1">
-                {this.state.activeMovieInfo.overview}
+              <Typography className={classes.overview} variant="body1">
+              <b>Overview: </b>{this.state.activeMovieInfo.overview}
+              </Typography>
+        
+              <Typography className={classes.release}>
+                <b>Release Date: </b> {this.state.activeMovieInfo.release_date}
+              </Typography>
+                
+              <Typography className={classes.rate}>
+                <b>Score: </b> {this.state.activeMovieInfo.vote_average}/10
               </Typography>
 
               <DialogContentText id="alert-dialog-slide-description" />
