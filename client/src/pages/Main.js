@@ -3,7 +3,6 @@ import API from "../utils/API";
 import Coverflow from "react-coverflow";
 // import PrimaryAppBar from "../components/PrimaryAppBar";
 // import Button from "@material-ui/core/Button";
-import "./styles/Main.css";
 
 // Text field
 import TextField from "@material-ui/core/TextField";
@@ -16,15 +15,19 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Typography from '@material-ui/core/Typography';
 // import Slide from '@material-ui/core/Slide';
 
 //Main Page
 class Main extends Component {
   state = {
     movies: [],
+    activeMovieInfo: {},
+    savedMovies: [],
     open: false,
     isLoggedIn: false,
-    username: ""
+    username: "",
+    active: 0
   };
 
   // Check login status on load
@@ -65,8 +68,12 @@ class Main extends Component {
 
   //dialog
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
+  handleClickOpen = (movieTitle) => {
+    const moviePicked = this.state.movies.find(movie => movie.title === movieTitle)
+    this.setState({ 
+      activeMovieInfo: moviePicked,
+      open: true 
+    });
   };
 
   handleClose = () => {
@@ -87,12 +94,35 @@ class Main extends Component {
     });
   };
 
-  //Testing OMBD API function/route
-  // movieDetails = movieTitle => {
-  //   API.movieInfo(movieTitle)
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err.response));
-  // };
+  //dialog function
+  dialogueMovies = movieTit1e => {
+    API.movieInfo(movieTit1e).then(({ data }) => {
+      this.setState({ movies: data });
+    });
+  };
+
+  //save movie
+  saveMovie = (id) => {
+    const movie = this.state.movies.find(movie => movie.movieId === id);
+
+    API.saveMovie(movie)
+      .then(({data}) => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  }
+
+
+  saveMovie = (id) => {
+    const movie = this.state.movieList.find(movie => movie.movieId === id);
+
+    API.saveMovie(movie)
+      .then(({data}) => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  }
+
 
   render() {
     // Reference for checking if user is logged in
@@ -120,26 +150,27 @@ class Main extends Component {
               onChange={this.handleInputChange}
             />
           </form>
-
+          </div>
+              
           <Coverflow
             className="carousel"
             width={960}
             height={480}
             displayQuantityOfSide={2}
             navigation
-            infiniteScroll
             enableHeading
+            active={this.state.active}
           >
             {this.state.movies.map((movie, i) => (
               <img
-                key={i}
+                key={movie.title}
                 src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={`${movie.title}`}
-                onClick={this.handleClickOpen}
+                onClick={() => this.handleClickOpen(movie.title)}
               />
             ))}
           </Coverflow>
-        </div>
+       
         <div>
           <Dialog
             open={this.state.open}
@@ -149,21 +180,26 @@ class Main extends Component {
             aria-describedby="alert-dialog-slide-description"
           >
             <DialogTitle id="alert-dialog-slide-title">
-              {"Use Google's location service?"}
+             <Typography variant='title'>{this.state.activeMovieInfo.title}</Typography>
             </DialogTitle>
             <DialogContent>
+            <img src={`http://image.tmdb.org/t/p/original/${this.state.activeMovieInfo.poster_path}`} alt= {this.state.activeMovieInfo.title}></img>
+                      
+            <Typography variant='body1'>{this.state.activeMovieInfo.overview}</Typography>
+                   
+
+
+             
               <DialogContentText id="alert-dialog-slide-description">
-                Let Google help apps determine location. This means sending
-                anonymous location data to Google, even when no apps are
-                running.
+              
               </DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleClose} color="primary">
-                Disagree
+                Save Movie
               </Button>
               <Button onClick={this.handleClose} color="primary">
-                Agree
+                Close
               </Button>
             </DialogActions>
           </Dialog>
