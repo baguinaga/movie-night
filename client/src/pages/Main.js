@@ -39,7 +39,10 @@ const styles = theme => ({
   },
 //dialog
   container: {
-    textAlign: "center"
+    textAlign: "center",
+  },
+  dialog: {
+    background: "rgba(50,50,50,0.55) !important"
   },
   moviePoster: {
     width: "40%",
@@ -230,8 +233,9 @@ class Main extends Component {
           ))}
         </Coverflow>
 
-        <div>
+        <div >
           <Dialog
+            className={classes.dialog}
             open={this.state.open}
             keepMounted
             onClose={this.handleClose}
