@@ -177,11 +177,10 @@ class PrimaryAppBar extends Component {
             <div className={classes.sectionDesktop}>
               {/* Login */}
               <Button
-                variant="outlined"
+                variant="text"
+                color="primary"
                 component={Link}
                 to="/login"
-                color="primary"
-                className={classes.button}
                 // onClick={props.handleFormSubmit}
               >
                 <Login />
@@ -189,11 +188,10 @@ class PrimaryAppBar extends Component {
               </Button>
               {/* Register */}
               <Button
-                variant="outlined"
+                variant="text"
+                color="primary"
                 component={Link}
                 to="/register"
-                color="primary"
-                className={classes.button}
                 // onClick={props.handleFormSubmit}
               >
                 <PersonAdd />

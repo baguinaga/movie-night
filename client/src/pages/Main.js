@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Coverflow from "react-coverflow";
-<<<<<<< HEAD
-=======
-// import PrimaryAppBar from "../components/PrimaryAppBar";
-// import Button from "@material-ui/core/Button";
-import "./styles/Main.css";
-
-// Text field
->>>>>>> 1ff9c0234012e54d66d10d78b2b216f6e4982dfd
 import TextField from "@material-ui/core/TextField";
 import "./styles/Main.css";
 
@@ -143,20 +135,6 @@ class Main extends Component {
             ))}
           </Coverflow>
         </div>
-<<<<<<< HEAD
-        <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-          style={{ alignItems: "center", justifyContent: "center" }}
-        >
-          <div className="movieModal">
-            <h1>The modal is working</h1>
-            <Button onClick={this.handleClose}>Close</Button>
-          </div>
-        </Modal>
-=======
         <div>
           <Dialog
             open={this.state.open}
@@ -185,7 +163,6 @@ class Main extends Component {
             </DialogActions>
           </Dialog>
         </div>
->>>>>>> 1ff9c0234012e54d66d10d78b2b216f6e4982dfd
       </div>
     );
   }

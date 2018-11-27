@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     success: false,
     username: "",
@@ -33,7 +33,7 @@ class Login extends Component {
   render() {
     // If Signup was a success, take them to the Login page
     if (this.state.success) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/" />;
     }
 
     return (
@@ -109,4 +109,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
