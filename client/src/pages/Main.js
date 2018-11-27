@@ -38,10 +38,7 @@ const styles = theme => ({
     borderColor: "white !important"
   },
   container: {
-    display: "flex",
-    flexWrap: "wrap",
-    textAlign: "center",
-    justifyContent: "center"
+    textAlign: "center"
   },
   moviePoster: {
     width: "100%",
@@ -192,8 +189,8 @@ class Main extends Component {
         <Coverflow
           className="carousel"
           width={960}
-          height={480}
-          displayQuantityOfSide={2}
+          height={580}
+          displayQuantityOfSide={3}
           navigation
           enableHeading
           active={this.state.active}
@@ -221,8 +218,7 @@ class Main extends Component {
                 {this.state.activeMovieInfo.title}
               </Typography>
             </DialogTitle>
-            <DialogContent
-            className={classes.container}>
+            <DialogContent className={classes.container}>
               <img
                 className={classes.moviePoster}
                 src={`http://image.tmdb.org/t/p/original/${
