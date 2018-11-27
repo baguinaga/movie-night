@@ -40,7 +40,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/mern-auth-demo",
+  process.env.MONGODB_URI || "mongodb://localhost/movie-night",
   { useNewUrlParser: true }
 );
 

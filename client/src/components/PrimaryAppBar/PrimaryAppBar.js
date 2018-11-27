@@ -12,7 +12,6 @@ import { withStyles } from "@material-ui/core/styles";
 // Icons
 import Login from "@material-ui/icons/Input";
 import PersonAdd from "@material-ui/icons/PersonAdd";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
 
@@ -135,12 +134,6 @@ class PrimaryAppBar extends Component {
           </IconButton>
           <p>Register</p>
         </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
-        </MenuItem>
       </Menu>
     );
 
@@ -194,15 +187,6 @@ class PrimaryAppBar extends Component {
                 <PersonAdd />
                 Register
               </Button>
-              {/* Account Profile */}
-              <IconButton
-                aria-owns={isMenuOpen ? "material-appbar" : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

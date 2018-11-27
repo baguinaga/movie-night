@@ -14,6 +14,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+//Dropdown Menu
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import "./styles/Main.css";
 
 const styles = theme => ({
@@ -37,9 +42,9 @@ const styles = theme => ({
   notchedOutline: {
     borderColor: "white !important"
   },
-//dialog
+  //dialog
   container: {
-    textAlign: "center",
+    textAlign: "center"
   },
   dialog: {
     background: "rgba(50,50,50,0.55) !important"
@@ -75,6 +80,25 @@ const styles = theme => ({
   }
 });
 
+const options = [
+  'None',
+  'Atria',
+  'Callisto',
+  'Dione',
+  'Ganymede',
+  'Hangouts Call',
+  'Luna',
+  'Oberon',
+  'Phobos',
+  'Pyxis',
+  'Sedna',
+  'Titania',
+  'Triton',
+  'Umbriel',
+];
+
+const ITEM_HEIGHT = 48;
+
 //Main Page
 class Main extends Component {
   state = {
@@ -83,6 +107,7 @@ class Main extends Component {
     savedMovies: [],
     open: false,
     isLoggedIn: false,
+    anchorEl: null,
     username: "",
     active: 0
   };
@@ -139,6 +164,14 @@ class Main extends Component {
     this.setState({ open: false });
   };
 
+  handlePlaylistClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handlePlaylistClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
   //getting trending movies from server-side call
   trendingMovies = () => {
     API.movieTrend().then(({ data }) => {
@@ -153,36 +186,22 @@ class Main extends Component {
     });
   };
 
-  //dialog function
-  dialogueMovies = movieTit1e => {
-    API.movieInfo(movieTit1e).then(({ data }) => {
-      this.setState({ movies: data });
-    });
-  };
-
   //save movie
   saveMovie = id => {
-    const movie = this.state.movies.find(movie => movie.movieId === id);
-
+    const movie = this.state.movies.find(movie => movie.id === id);
+    console.log(movie);
     API.saveMovie(movie)
       .then(({ data }) => {
-        console.log(data);
-      })
-      .catch(err => console.log(err));
-  };
-
-  saveMovie = id => {
-    const movie = this.state.movieList.find(movie => movie.movieId === id);
-
-    API.saveMovie(movie)
-      .then(({ data }) => {
-        console.log(data);
+        this.setState({ savedMovies: data });
+        this.handleClose();
       })
       .catch(err => console.log(err));
   };
 
   render() {
     const { classes } = this.props;
+    const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
 
     return (
       <div className="wrapper">
@@ -212,6 +231,38 @@ class Main extends Component {
               onChange={this.handleInputChange}
             />
           </form>
+          <div>
+            <IconButton
+              aria-label="More"
+              aria-owns={open ? "long-menu" : undefined}
+              aria-haspopup="true"
+              onClick={this.handleClick}
+            >
+              <MoreVertIcon />
+            </IconButton>
+            <Menu
+              id="long-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={this.handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: 200
+                }
+              }}
+            >
+              {options.map(option => (
+                <MenuItem
+                  key={option}
+                  selected={option === "Pyxis"}
+                  onClick={this.handleClose}
+                >
+                  {option}
+                </MenuItem>
+              ))}
+            </Menu>
+          </div>
         </div>
 
         <Coverflow
@@ -233,7 +284,7 @@ class Main extends Component {
           ))}
         </Coverflow>
 
-        <div >
+        <div>
           <Dialog
             className={classes.dialog}
             open={this.state.open}
@@ -257,13 +308,14 @@ class Main extends Component {
               />
 
               <Typography className={classes.overview} variant="body1">
-              <b>Overview: </b>{this.state.activeMovieInfo.overview}
+                <b>Overview: </b>
+                {this.state.activeMovieInfo.overview}
               </Typography>
-        
+
               <Typography className={classes.release}>
                 <b>Release Date: </b> {this.state.activeMovieInfo.release_date}
               </Typography>
-                
+
               <Typography className={classes.rate}>
                 <b>Score: </b> {this.state.activeMovieInfo.vote_average}/10
               </Typography>
@@ -271,7 +323,10 @@ class Main extends Component {
               <DialogContentText id="alert-dialog-slide-description" />
             </DialogContent>
             <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
+              <Button
+                onClick={() => this.saveMovie(this.state.activeMovieInfo.id)}
+                color="primary"
+              >
                 Save Movie
               </Button>
               <Button onClick={this.handleClose} color="primary">

@@ -27,13 +27,13 @@ export default {
   },
   // Saving movies to playlist CRUD methods
   getSavedMovies: function() {
-    return axios.get('/api/movies')
+    return axios.get('/api/movies/playlist')
+  },
+  saveMovie: function(movieData) {
+    return axios.post('/api/movies/playlist', movieData)
   },
   getMovieById: function(movieId) {
     return axios.get(`/api/movies/${movieId}`)
-  },
-  saveMovie: function(movieData) {
-    return axios.post('/api/movies', movieData)
   },
   updateMovie: function(movieId, movieData) {
     return axios.put(`/api/movies/${movieId}`, movieData)
