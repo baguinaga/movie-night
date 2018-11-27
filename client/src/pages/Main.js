@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+//Carousel / Coverflow
 import Coverflow from "react-coverflow";
+//Material UI
 import TextField from "@material-ui/core/TextField";
-import "./styles/Main.css";
-
+import { withStyles } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
 //dialog
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -11,7 +13,35 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-// import Slide from '@material-ui/core/Slide';
+import "./styles/Main.css";
+
+const styles = theme => ({
+  textField: {
+    width: "50vw",
+    margin: "0 25vw"
+  },
+  cssLabel: {
+    "&$cssFocused": {
+      color: red[500] + "!important"
+    },
+    color: "white !important"
+  },
+  cssFocused: {},
+  cssOutlinedInput: {
+    color: "white",
+    "&$cssFocused $notchedOutline": {
+      borderColor: red[500] + "!important"
+    }
+  },
+  notchedOutline: {
+    borderColor: "white !important"
+  },
+  moviePoster: {
+    width: "100%",
+    maxWidth: "400px",
+    height: "auto"
+  }
+});
 
 //Main Page
 class Main extends Component {
@@ -96,22 +126,33 @@ class Main extends Component {
     //   return <Redirect to="/login" />;
     // }
 
+    const { classes } = this.props;
+
     return (
       <div className="wrapper">
         <div>
           <form onSubmit={this.handleFormSubmit}>
             <TextField
               id="movieInput"
-              className="textField"
+              className={classes.textField}
               name="search"
+              InputLabelProps={{
+                classes: {
+                  root: classes.cssLabel,
+                  focused: classes.cssFocused
+                }
+              }}
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
               label="Search for a movie!"
-              style={{ margin: 8 }}
               placeholder="Movie Title"
               margin="normal"
-              variant="filled"
-              InputLabelProps={{
-                shrink: true
-              }}
+              variant="outlined"
               onChange={this.handleInputChange}
             />
           </form>
@@ -168,4 +209,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default withStyles(styles)(Main);

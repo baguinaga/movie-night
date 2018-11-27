@@ -42,7 +42,7 @@ body {
 
 /* textfield */
 
-input {
+/* input {
   color: white !important;
 } 
 
@@ -57,10 +57,7 @@ label {
   position: relative;
   left: 500px;
   border: 1px solid #727272 !important;
-}
- .MuiFormLabel-root-124{ 
-   color: gray;
- }
+} */
 
  /* movieModal */
  

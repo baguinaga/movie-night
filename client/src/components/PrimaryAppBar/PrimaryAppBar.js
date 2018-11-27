@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+// Material-UI Components
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
+// Icons
 import Login from "@material-ui/icons/Input";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-// button and link from react-router-dom
-import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
 const styles = theme => ({
@@ -24,7 +24,7 @@ const styles = theme => ({
     marginLeft: 20,
     color: "white"
   },
-  signup: {
+  register: {
     color: "white",
     marginLeft: -10,
     marginRight: 20
@@ -155,30 +155,30 @@ class PrimaryAppBar extends Component {
           style={{ background: "transparent", boxShadow: "none" }}
         >
           <Toolbar>
-            {/* Menu Button, should remove*/}
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Open drawer"
-            >
-              <MenuIcon />
-            </IconButton>
-
             {/* Project Title */}
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
+            <Button
+              variant="text"
+              className={classes.login}
+              component={Link}
+              to="/"
+              // onClick={props.handleFormSubmit}
             >
-              MovieNight
-            </Typography>
+              <Typography
+                className={classes.title}
+                variant="h6"
+                color="inherit"
+                noWrap
+              >
+                MovieNight
+              </Typography>
+            </Button>
+
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               {/* Login */}
               <Button
                 variant="text"
-                color="primary"
+                className={classes.login}
                 component={Link}
                 to="/login"
                 // onClick={props.handleFormSubmit}
@@ -189,6 +189,7 @@ class PrimaryAppBar extends Component {
               {/* Register */}
               <Button
                 variant="text"
+                className={classes.register}
                 color="primary"
                 component={Link}
                 to="/register"
