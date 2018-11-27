@@ -31,9 +31,17 @@ const styles = theme => ({
   grow: {
     flexGrow: 1
   },
+  mark: {
+    backgroundColor: "black",
+    color:"red"
+  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20
+  },
+  name: {
+    fontSize: 35,
+    fontFamily: "Cinzel"
   },
   title: {
     fontFamily: "Cinzel"
@@ -153,12 +161,12 @@ class PrimaryAppBar extends Component {
               // onClick={props.handleFormSubmit}
             >
               <Typography
-                className={classes.title}
+                className={classes.name}
                 variant="h6"
                 color="inherit"
                 noWrap
               >
-                MovieNight
+                Movie<mark className={classes.mark}>Night</mark>
               </Typography>
             </Button>
 
