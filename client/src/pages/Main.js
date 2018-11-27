@@ -6,7 +6,7 @@ import Coverflow from "react-coverflow";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import red from "@material-ui/core/colors/red";
-//dialog
+//Dialog
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -89,7 +89,6 @@ class Main extends Component {
   };
 
   //dialog
-
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -112,20 +111,14 @@ class Main extends Component {
     });
   };
 
-  //Testing OMBD API function/route
-  // movieDetails = movieTitle => {
-  //   API.movieInfo(movieTitle)
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err.response));
-  // };
+  //Retrieve OMBD movie info
+  metaMovies = movieTitle => {
+    API.movieInfo(movieTitle)
+      .then(res => console.log(res))
+      .catch(err => console.log(err.response));
+  };
 
   render() {
-    // Reference for checking if user is logged in
-    // If user isn't logged in, don't let them see this page
-    // if (!this.state.isLoggedIn) {
-    //   return <Redirect to="/login" />;
-    // }
-
     const { classes } = this.props;
 
     return (
