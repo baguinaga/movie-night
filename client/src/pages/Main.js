@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 //Carousel / Coverflow
 import Coverflow from "react-coverflow";
-//Material UI
+//Material-UI
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
