@@ -189,7 +189,7 @@ class Main extends Component {
         <Coverflow
           className="carousel"
           width={960}
-          height={580}
+          height={550}
           displayQuantityOfSide={3}
           navigation
           enableHeading

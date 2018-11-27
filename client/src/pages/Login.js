@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
 //Material-UI
+import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
@@ -14,10 +15,16 @@ const styles = theme => ({
     flexWrap: "wrap",
     textAlign: "center",
     justifyContent: "center",
-    background: "rgba(255,255,255,0.09)",
-    height: "40vh",
+    background: "rgba(50,50,50,0.55)",
+    height: "45vh",
     width: "60vw",
-    margin: "15vh auto"
+    margin: "10vh auto",
+    padding: "5vh"
+  },
+  title: {
+    fontFamily: "Cinzel",
+    fontSize: "1.5em",
+    color: "white"
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -84,6 +91,14 @@ class Login extends Component {
 
     return (
       <form className={classes.container} autoComplete="off">
+        <Typography
+          className={classes.title}
+          variant="h6"
+          color="inherit"
+          noWrap
+        >
+          Login
+        </Typography>
         <TextField
           required
           id="username-input"
