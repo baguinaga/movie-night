@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
-import { withStyles } from "@material-ui/core/styles";
+//Material-UI
+import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
 
 const styles = theme => ({
   container: {
@@ -12,21 +15,44 @@ const styles = theme => ({
     flexWrap: "wrap",
     textAlign: "center",
     justifyContent: "center",
-    background: "rgba(255,255,255,0.09)",
-    height: "40vh",
+    background: "rgba(50,50,50,0.55)",
+    height: "45vh",
     width: "60vw",
-    margin: "15vh auto"
+    margin: "10vh auto",
+    padding: "5vh"
+  },
+  title: {
+    fontFamily: "Cinzel",
+    fontSize: "1.5em",
+    color: "white"
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: "90%"
   },
+  cssLabel: {
+    "&$cssFocused": {
+      color: red[500] + "!important"
+    },
+    color: "white !important"
+  },
+  cssFocused: {},
+  cssOutlinedInput: {
+    color: "white",
+    "&$cssFocused $notchedOutline": {
+      borderColor: red[500] + "!important"
+    }
+  },
+  notchedOutline: {
+    borderColor: "white !important"
+  },
   button: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    margin: "auto auto",
     width: "10%",
-    height: "10%"
+    height: "10%",
+    borderColor: "white !important",
+    color: "white !important"
   }
 });
 
@@ -36,7 +62,6 @@ class Login extends Component {
     username: "",
     password: ""
   };
-
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -66,37 +91,72 @@ class Login extends Component {
 
     return (
       <form className={classes.container} autoComplete="off">
+        <Typography
+          className={classes.title}
+          variant="h6"
+          color="inherit"
+          noWrap
+        >
+          Login
+        </Typography>
         <TextField
           required
           id="username-input"
+          name="username"
+          label="Username"
+          placeholder="Username"
+          margin="normal"
+          variant="outlined"
+          type="text"
+          className={classes.textField}
           value={this.state.username}
           onChange={this.handleInputChange}
-          label="Username"
-          name="username"
-          placeholder="Username"
-          className={classes.textField}
-          type="text"
-          margin="normal"
+          InputLabelProps={{
+            classes: {
+              root: classes.cssLabel,
+              focused: classes.cssFocused
+            }
+          }}
+          InputProps={{
+            classes: {
+              root: classes.cssOutlinedInput,
+              focused: classes.cssFocused,
+              notchedOutline: classes.notchedOutline
+            }
+          }}
         />
         <TextField
           required
           id="password-input"
-          value={this.state.password}
-          onChange={this.handleInputChange}
-          label="Password"
           name="password"
-          className={classes.textField}
+          label="Password"
+          placeholder="Password"
+          margin="normal"
+          variant="outlined"
           type="password"
           autoComplete="current-password"
-          margin="normal"
+          className={classes.textField}
+          value={this.state.password}
+          onChange={this.handleInputChange}
+          InputLabelProps={{
+            classes: {
+              root: classes.cssLabel,
+              focused: classes.cssFocused
+            }
+          }}
+          InputProps={{
+            classes: {
+              root: classes.cssOutlinedInput,
+              focused: classes.cssFocused,
+              notchedOutline: classes.notchedOutline
+            }
+          }}
         />
         <Button
           type="submit"
           onClick={this.login}
           variant="outlined"
-          color="primary"
           className={classes.button}
-
         >
           Submit
         </Button>
