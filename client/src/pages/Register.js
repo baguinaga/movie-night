@@ -1,6 +1,33 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
+import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+    textAlign: "center",
+    justifyContent: "center",
+    background: "rgba(255,255,255,0.09)",
+    height: "60vh",
+    width: "60vw",
+    margin: "15vh auto"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: "90%"
+  },
+  button: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: "10%",
+    height: "10%"
+  }
+});
 
 class Register extends Component {
   state = {
@@ -36,77 +63,68 @@ class Register extends Component {
       return <Redirect to="/" />;
     }
 
-    return (
-      <div className="container my-5">
-        <div className="row justify-content-center">
-          <form>
-            <h3>Sign Up!</h3>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="Username"
-              />
-              <small id="usernameHelp" className="form-text text-muted">
-                Enter your username
-              </small>
-            </div>
-            <div className="form-group">
-              <label htmlFor="firstname">First Name</label>
-              <input
-                type="text"
-                name="username"
-                value={this.state.firstName}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="First Name"
-              />
-              <small id="firstNameHelp" className="form-text text-muted">
-                Enter your first name
-              </small>
-            </div>
-            <div className="form-group">
-              <label htmlFor="username">Last Name</label>
-              <input
-                type="text"
-                name="lastname"
-                value={this.state.lastName}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="Last Name"
-              />
-              <small id="lastNameHelp" className="form-text text-muted">
-                Enter your last name
-              </small>
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                className="form-control"
-                placeholder="Password"
-              />
-            </div>
+    const { classes } = this.props;
 
-            <button
-              type="submit"
-              className="btn btn-success"
-              onClick={this.register}
-            >
-              Sign Up!
-            </button>
-          </form>
-        </div>
-      </div>
+    return (
+      <form className={classes.container} autoComplete="off">
+        <TextField
+          required
+          id="username-input"
+          value={this.state.username}
+          onChange={this.handleInputChange}
+          label="Username"
+          name="username"
+          placeholder="Username"
+          className={classes.textField}
+          type="text"
+          margin="normal"
+        />
+        <TextField
+          id="firstname-input"
+          value={this.state.firstName}
+          onChange={this.handleInputChange}
+          label="First Name"
+          name="firstname"
+          placeholder="First Name"
+          className={classes.textField}
+          type="text"
+          margin="normal"
+        />
+        <TextField
+          id="firstname-input"
+          value={this.state.lastName}
+          onChange={this.handleInputChange}
+          label="Last Name"
+          name="lastname"
+          placeholder="Last Name"
+          className={classes.textField}
+          type="text"
+          margin="normal"
+        />
+        <TextField
+          required
+          id="password-input"
+          value={this.state.password}
+          onChange={this.handleInputChange}
+          label="Password"
+          name="password"
+          className={classes.textField}
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
+        />
+        <Button
+          type="submit"
+          onClick={this.register}
+          variant="outlined"
+          color="primary"
+          className={classes.button}
+        >
+          Submit
+        </Button>
+      </form>
     );
   }
 }
 
-export default Register;
+export default withStyles(styles)(Register);
