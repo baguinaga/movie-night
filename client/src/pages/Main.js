@@ -37,13 +37,25 @@ const styles = theme => ({
   notchedOutline: {
     borderColor: "white !important"
   },
+//dialog
   container: {
     textAlign: "center"
   },
   moviePoster: {
-    width: "100%",
+    width: "40%",
     maxWidth: "400px",
-    height: "auto"
+    height: "auto",
+    float: "left"
+  },
+  overview: {
+    textAlign: "left",
+    position: "relative",
+    left: 10
+  },
+  title: {
+    fontFamily: "Cinzel",
+    textAlign: "center",
+    fontSize: 30
   }
 });
 
@@ -214,7 +226,7 @@ class Main extends Component {
             aria-describedby="alert-dialog-slide-description"
           >
             <DialogTitle id="alert-dialog-slide-title">
-              <Typography variant="title">
+              <Typography className={classes.title} variant="title">
                 {this.state.activeMovieInfo.title}
               </Typography>
             </DialogTitle>
@@ -227,7 +239,7 @@ class Main extends Component {
                 alt={this.state.activeMovieInfo.title}
               />
 
-              <Typography variant="body1">
+              <Typography className={classes.overview} variant="body1">
                 {this.state.activeMovieInfo.overview}
               </Typography>
 
