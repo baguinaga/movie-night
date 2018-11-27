@@ -91,7 +91,7 @@ class Register extends Component {
           margin="normal"
         />
         <TextField
-          id="firstname-input"
+          id="lastname-input"
           value={this.state.lastName}
           onChange={this.handleInputChange}
           label="Last Name"
