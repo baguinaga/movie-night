@@ -40,8 +40,10 @@ const styles = theme => ({
     marginRight: 20
   },
   name: {
-    fontSize: 35,
-    fontFamily: "Cinzel"
+    fontSize: 42,
+    fontFamily: "Cinzel",
+    position: "relative",
+    right: 40
   },
   title: {
     fontFamily: "Cinzel"

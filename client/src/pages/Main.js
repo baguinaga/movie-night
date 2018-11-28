@@ -24,7 +24,8 @@ import PlaylistPlay from "@material-ui/icons/PlaylistPlay";
 const styles = theme => ({
   textField: {
     width: "50vw",
-    margin: "0 25vw"
+    margin: "0 25vw",
+    marginBottom: "-10vw"
   },
   cssLabel: {
     "&$cssFocused": {
@@ -42,6 +43,7 @@ const styles = theme => ({
   notchedOutline: {
     borderColor: "white !important"
   },
+
   //dialog
   container: {
     textAlign: "center"
@@ -63,9 +65,6 @@ const styles = theme => ({
     position: "relative",
     left: 10
   },
-  icon: {
-    color: "white"
-  },
   rate: {
     textAlign: "left",
     position: "relative",
@@ -83,6 +82,14 @@ const styles = theme => ({
     textAlign: "center",
     fontSize: 30,
     borderBottom: "1px solid black"
+  },
+  //playlist
+  icon: {
+    color: "white",
+    float: "right",
+    position: "relative",
+    bottom: "10px",
+    right: "310px"
   }
 });
 
@@ -218,35 +225,34 @@ class Main extends Component {
               onChange={this.handleInputChange}
             />
           </form>
-          <div>
-            <IconButton
-              className={classes.icon}
-              aria-label="More"
-              aria-owns={open ? "long-menu" : undefined}
-              aria-haspopup="true"
-              onClick={this.handleMenuClick}
-            >
-              <PlaylistPlay />
-            </IconButton>
-            <Menu
-              id="long-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={this.handleMenuClose}
-              PaperProps={{
-                style: {
-                  maxHeight: 200,
-                  width: 200
-                }
-              }}
-            >
-              {this.state.savedMovies.map((movie, i) => (
-                <MenuItem key={movie.title} onClick={this.handleMenuClose}>
-                  {movie.title}
-                </MenuItem>
-              ))}
-            </Menu>
-          </div>
+
+          <IconButton
+            className={classes.icon}
+            aria-label="More"
+            aria-owns={open ? "long-menu" : undefined}
+            aria-haspopup="true"
+            onClick={this.handleMenuClick}
+          >
+            <PlaylistPlay />
+          </IconButton>
+          <Menu
+            id="long-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={this.handleMenuClose}
+            PaperProps={{
+              style: {
+                maxHeight: 200,
+                width: 200
+              }
+            }}
+          >
+            {this.state.savedMovies.map((movie, i) => (
+              <MenuItem key={movie.title} onClick={this.handleMenuClose}>
+                {movie.title}
+              </MenuItem>
+            ))}
+          </Menu>
         </div>
 
         <Coverflow
