@@ -46,6 +46,9 @@ const styles = theme => ({
   container: {
     textAlign: "center"
   },
+  searchContainer: {
+    display: "flex"
+  },
   dialog: {
     background: "rgba(50,50,50,0.55) !important"
   },
@@ -176,7 +179,7 @@ class Main extends Component {
     console.log(movie);
     API.saveMovie(movie)
       .then(({ data }) => {
-        this.setState({ savedMovies: data });
+        this.setState({ savedMovies: this.state.savedMovies.concat(data) });
         this.handleClickClose();
       })
       .catch(err => console.log(err));
@@ -189,7 +192,7 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <div style={}>
+        <div>
           <form onSubmit={this.handleFormSubmit}>
             <TextField
               id="movieInput"
