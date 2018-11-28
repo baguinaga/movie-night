@@ -14,12 +14,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-//Dropdown Menu
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import "./styles/Main.css";
+//Dropdown Menu
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import PlaylistPlay from "@material-ui/icons/PlaylistPlay";
 
 const styles = theme => ({
   textField: {
@@ -60,6 +60,9 @@ const styles = theme => ({
     position: "relative",
     left: 10
   },
+  icon: {
+    color: "white"
+  },
   rate: {
     textAlign: "left",
     position: "relative",
@@ -80,25 +83,6 @@ const styles = theme => ({
   }
 });
 
-const options = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel',
-];
-
-const ITEM_HEIGHT = 48;
-
 //Main Page
 class Main extends Component {
   state = {
@@ -107,9 +91,9 @@ class Main extends Component {
     savedMovies: [],
     open: false,
     isLoggedIn: false,
-    anchorEl: null,
     username: "",
-    active: 0
+    active: 0,
+    anchorEl: null
   };
 
   // Check login status on load
@@ -160,15 +144,15 @@ class Main extends Component {
     });
   };
 
-  handleClose = () => {
+  handleClickClose = () => {
     this.setState({ open: false });
   };
 
-  handlePlaylistClick = event => {
+  handleMenuClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handlePlaylistClose = () => {
+  handleMenuClose = () => {
     this.setState({ anchorEl: null });
   };
 
@@ -193,7 +177,7 @@ class Main extends Component {
     API.saveMovie(movie)
       .then(({ data }) => {
         this.setState({ savedMovies: data });
-        this.handleClose();
+        this.handleClickClose();
       })
       .catch(err => console.log(err));
   };
@@ -205,7 +189,7 @@ class Main extends Component {
 
     return (
       <div className="wrapper">
-        <div>
+        <div style={}>
           <form onSubmit={this.handleFormSubmit}>
             <TextField
               id="movieInput"
@@ -233,32 +217,29 @@ class Main extends Component {
           </form>
           <div>
             <IconButton
+              className={classes.icon}
               aria-label="More"
               aria-owns={open ? "long-menu" : undefined}
               aria-haspopup="true"
-              onClick={this.handleClick}
+              onClick={this.handleMenuClick}
             >
-              <MoreVertIcon />
+              <PlaylistPlay />
             </IconButton>
             <Menu
               id="long-menu"
               anchorEl={anchorEl}
               open={open}
-              onClose={this.handleClose}
+              onClose={this.handleMenuClose}
               PaperProps={{
                 style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
+                  maxHeight: 200,
                   width: 200
                 }
               }}
             >
-              {options.map(option => (
-                <MenuItem
-                  key={option}
-                  selected={option === "Pyxis"}
-                  onClick={this.handleClose}
-                >
-                  {option}
+              {this.state.savedMovies.map((movie, i) => (
+                <MenuItem key={movie.title} onClick={this.handleMenuClose}>
+                  {movie.title}
                 </MenuItem>
               ))}
             </Menu>
@@ -289,7 +270,7 @@ class Main extends Component {
             className={classes.dialog}
             open={this.state.open}
             keepMounted
-            onClose={this.handleClose}
+            onClose={this.handleClickClose}
             aria-labelledby="alert-dialog-slide-title"
             aria-describedby="alert-dialog-slide-description"
           >
@@ -329,7 +310,7 @@ class Main extends Component {
               >
                 Save Movie
               </Button>
-              <Button onClick={this.handleClose} color="primary">
+              <Button onClick={this.handleClickClose} color="primary">
                 Close
               </Button>
             </DialogActions>
