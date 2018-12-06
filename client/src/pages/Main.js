@@ -225,34 +225,35 @@ class Main extends Component {
               onChange={this.handleInputChange}
             />
           </form>
-
-          <IconButton
-            className={classes.icon}
-            aria-label="More"
-            aria-owns={open ? "long-menu" : undefined}
-            aria-haspopup="true"
-            onClick={this.handleMenuClick}
-          >
-            <PlaylistPlay />
-          </IconButton>
-          <Menu
-            id="long-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={this.handleMenuClose}
-            PaperProps={{
-              style: {
-                maxHeight: 200,
-                width: 200
-              }
-            }}
-          >
-            {this.state.savedMovies.map((movie, i) => (
-              <MenuItem key={movie.title} onClick={this.handleMenuClose}>
-                {movie.title}
-              </MenuItem>
-            ))}
-          </Menu>
+          <div>
+            <IconButton
+              className={classes.icon}
+              aria-label="More"
+              aria-owns={open ? "long-menu" : undefined}
+              aria-haspopup="true"
+              onClick={this.handleMenuClick}
+            >
+              <PlaylistPlay />
+            </IconButton>
+            <Menu
+              id="long-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={this.handleMenuClose}
+              PaperProps={{
+                style: {
+                  maxHeight: 200,
+                  width: 200
+                }
+              }}
+            >
+              {this.state.savedMovies.map((movie, i) => (
+                <MenuItem key={movie.title} onClick={this.handleMenuClose}>
+                  {movie.title}
+                </MenuItem>
+              ))}
+            </Menu>
+          </div>
         </div>
 
         <Coverflow
