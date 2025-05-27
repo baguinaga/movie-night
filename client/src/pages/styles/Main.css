@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cinzel:700');
+@import url("https://fonts.googleapis.com/css?family=Cinzel:700");
 
 /* full-image background wrapper */
 html,
@@ -6,7 +6,7 @@ body {
   height: 100%;
 }
 body {
-  background-image: url("/images/cinema-red.jpg");
+  background-image: url("../../images/cinema-red.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

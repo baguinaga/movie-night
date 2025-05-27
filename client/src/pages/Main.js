@@ -21,67 +21,67 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PlaylistPlay from "@material-ui/icons/PlaylistPlay";
 
-const styles = theme => ({
+const styles = (theme) => ({
   textField: {
     width: "50vw",
     margin: "0 25vw",
-    marginBottom: "-10vw"
+    marginBottom: "-10vw",
   },
   cssLabel: {
     "&$cssFocused": {
-      color: red[500] + "!important"
+      color: red[500] + "!important",
     },
-    color: "white !important"
+    color: "white !important",
   },
   cssFocused: {},
   cssOutlinedInput: {
     color: "white",
     "&$cssFocused $notchedOutline": {
-      borderColor: red[500] + "!important"
-    }
+      borderColor: red[500] + "!important",
+    },
   },
   notchedOutline: {
-    borderColor: "white !important"
+    borderColor: "white !important",
   },
 
   //dialog
   container: {
-    textAlign: "center"
+    textAlign: "center",
   },
   searchContainer: {
-    display: "flex"
+    display: "flex",
   },
   dialog: {
-    background: "rgba(50,50,50,0.55) !important"
+    background: "rgba(50,50,50,0.55) !important",
   },
   moviePoster: {
     width: "40%",
     maxWidth: "400px",
     height: "auto",
-    float: "left"
+    float: "left",
   },
   overview: {
     textAlign: "left",
     position: "relative",
-    left: 10
+    left: 10,
   },
   rate: {
     textAlign: "left",
     position: "relative",
     left: 10,
-    paddingTop: 20
+    paddingTop: 20,
   },
   release: {
     textAlign: "left",
     paddingTop: 40,
     position: "relative",
-    left: 10
+    left: 10,
   },
   title: {
     fontFamily: "Cinzel",
     textAlign: "center",
     fontSize: 30,
-    borderBottom: "1px solid black"
+    borderBottom: "1px solid black",
   },
   //playlist
   icon: {
@@ -89,8 +89,8 @@ const styles = theme => ({
     float: "right",
     position: "relative",
     bottom: "10px",
-    right: "310px"
-  }
+    right: "310px",
+  },
 });
 
 //Main Page
@@ -103,7 +103,7 @@ class Main extends Component {
     isLoggedIn: false,
     username: "",
     active: 0,
-    anchorEl: null
+    anchorEl: null,
   };
 
   // Check login status on load
@@ -115,27 +115,27 @@ class Main extends Component {
   // Check login status
   loginCheck = () => {
     API.loginCheck()
-      .then(res =>
+      .then((res) =>
         this.setState({
           isLoggedIn: res.data.isLoggedIn,
-          username: res.data.username
+          username: res.data.username,
         })
       )
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         this.setState({ isLoggedIn: false });
       });
   };
 
   // Taking user input from the searchbar
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     if (this.state.search) {
       this.recommendedMovies(this.state.search);
@@ -144,13 +144,13 @@ class Main extends Component {
 
   //dialog
 
-  handleClickOpen = movieTitle => {
+  handleClickOpen = (movieTitle) => {
     const moviePicked = this.state.movies.find(
-      movie => movie.title === movieTitle
+      (movie) => movie.title === movieTitle
     );
     this.setState({
       activeMovieInfo: moviePicked,
-      open: true
+      open: true,
     });
   };
 
@@ -158,7 +158,7 @@ class Main extends Component {
     this.setState({ open: false });
   };
 
-  handleMenuClick = event => {
+  handleMenuClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -174,22 +174,22 @@ class Main extends Component {
   };
 
   //movie recommended based on movie title
-  recommendedMovies = movieTit1e => {
+  recommendedMovies = (movieTit1e) => {
     API.movieRec(movieTit1e).then(({ data }) => {
       this.setState({ movies: data });
     });
   };
 
   //save movie
-  saveMovie = id => {
-    const movie = this.state.movies.find(movie => movie.id === id);
+  saveMovie = (id) => {
+    const movie = this.state.movies.find((movie) => movie.id === id);
     console.log(movie);
     API.saveMovie(movie)
       .then(({ data }) => {
         this.setState({ savedMovies: this.state.savedMovies.concat(data) });
         this.handleClickClose();
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   render() {
@@ -198,53 +198,53 @@ class Main extends Component {
     const open = Boolean(anchorEl);
 
     return (
-      <div className="wrapper">
+      <div className='wrapper'>
         <div>
           <form onSubmit={this.handleFormSubmit}>
             <TextField
-              id="movieInput"
+              id='movieInput'
               className={classes.textField}
-              name="search"
+              name='search'
               InputLabelProps={{
                 classes: {
                   root: classes.cssLabel,
-                  focused: classes.cssFocused
-                }
+                  focused: classes.cssFocused,
+                },
               }}
               InputProps={{
                 classes: {
                   root: classes.cssOutlinedInput,
                   focused: classes.cssFocused,
-                  notchedOutline: classes.notchedOutline
-                }
+                  notchedOutline: classes.notchedOutline,
+                },
               }}
-              label="Search for a movie!"
-              placeholder="Movie Title"
-              margin="normal"
-              variant="outlined"
+              label='Search for a movie!'
+              placeholder='Movie Title'
+              margin='normal'
+              variant='outlined'
               onChange={this.handleInputChange}
             />
           </form>
           <div>
             <IconButton
               className={classes.icon}
-              aria-label="More"
+              aria-label='More'
               aria-owns={open ? "long-menu" : undefined}
-              aria-haspopup="true"
+              aria-haspopup='true'
               onClick={this.handleMenuClick}
             >
               <PlaylistPlay />
             </IconButton>
             <Menu
-              id="long-menu"
+              id='long-menu'
               anchorEl={anchorEl}
               open={open}
               onClose={this.handleMenuClose}
               PaperProps={{
                 style: {
                   maxHeight: 200,
-                  width: 200
-                }
+                  width: 200,
+                },
               }}
             >
               {this.state.savedMovies.map((movie, i) => (
@@ -257,7 +257,7 @@ class Main extends Component {
         </div>
 
         <Coverflow
-          className="carousel"
+          className='carousel'
           width={960}
           height={550}
           displayQuantityOfSide={3}
@@ -281,24 +281,22 @@ class Main extends Component {
             open={this.state.open}
             keepMounted
             onClose={this.handleClickClose}
-            aria-labelledby="alert-dialog-slide-title"
-            aria-describedby="alert-dialog-slide-description"
+            aria-labelledby='alert-dialog-slide-title'
+            aria-describedby='alert-dialog-slide-description'
           >
-            <DialogTitle id="alert-dialog-slide-title">
-              <Typography className={classes.title} variant="title">
+            <DialogTitle id='alert-dialog-slide-title'>
+              <Typography className={classes.title} variant='inherit'>
                 {this.state.activeMovieInfo.title}
               </Typography>
             </DialogTitle>
             <DialogContent className={classes.container}>
               <img
                 className={classes.moviePoster}
-                src={`http://image.tmdb.org/t/p/original/${
-                  this.state.activeMovieInfo.poster_path
-                }`}
+                src={`http://image.tmdb.org/t/p/original/${this.state.activeMovieInfo.poster_path}`}
                 alt={this.state.activeMovieInfo.title}
               />
 
-              <Typography className={classes.overview} variant="body1">
+              <Typography className={classes.overview} variant='body1'>
                 <b>Overview: </b>
                 {this.state.activeMovieInfo.overview}
               </Typography>
@@ -311,16 +309,16 @@ class Main extends Component {
                 <b>Score: </b> {this.state.activeMovieInfo.vote_average}/10
               </Typography>
 
-              <DialogContentText id="alert-dialog-slide-description" />
+              <DialogContentText id='alert-dialog-slide-description' />
             </DialogContent>
             <DialogActions>
               <Button
                 onClick={() => this.saveMovie(this.state.activeMovieInfo.id)}
-                color="primary"
+                color='primary'
               >
                 Save Movie
               </Button>
-              <Button onClick={this.handleClickClose} color="primary">
+              <Button onClick={this.handleClickClose} color='primary'>
                 Close
               </Button>
             </DialogActions>

@@ -15,78 +15,78 @@ import PersonAdd from "@material-ui/icons/PersonAdd";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    width: "100%"
+    width: "100%",
   },
   login: {
     marginLeft: 20,
-    color: "white"
+    color: "white",
   },
   register: {
     color: "white",
     marginLeft: -10,
-    marginRight: 20
+    marginRight: 20,
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   mark: {
     backgroundColor: "black",
-    color:"red"
+    color: "red",
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20
+    marginRight: 20,
   },
   name: {
     fontSize: 42,
     fontFamily: "Cinzel",
     position: "relative",
-    right: 40
+    right: 40,
   },
   title: {
-    fontFamily: "Cinzel"
+    fontFamily: "Cinzel",
   },
   typography: {
-    useNextVariants: true
+    useNextVariants: true,
   },
   inputRoot: {
     color: "inherit",
-    width: "100%"
+    width: "100%",
   },
   inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
+    paddingTop: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(10),
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 200
-    }
+      width: 200,
+    },
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
+      display: "flex",
+    },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
+      display: "none",
+    },
+  },
 });
 
 class PrimaryAppBar extends Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
   };
 
-  handleProfileMenuOpen = event => {
+  handleProfileMenuOpen = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -95,7 +95,7 @@ class PrimaryAppBar extends Component {
     this.handleMobileMenuClose();
   };
 
-  handleMobileMenuOpen = event => {
+  handleMobileMenuOpen = (event) => {
     this.setState({ mobileMoreAnchorEl: event.currentTarget });
   };
 
@@ -133,13 +133,13 @@ class PrimaryAppBar extends Component {
         onClose={this.handleMobileMenuClose}
       >
         <MenuItem>
-          <IconButton color="inherit">
+          <IconButton color='inherit'>
             <Login />
           </IconButton>
           <p>Login</p>
         </MenuItem>
         <MenuItem>
-          <IconButton color="inherit">
+          <IconButton color='inherit'>
             <PersonAdd />
           </IconButton>
           <p>Register</p>
@@ -150,22 +150,22 @@ class PrimaryAppBar extends Component {
     return (
       <div className={classes.root}>
         <AppBar
-          position="static"
+          position='static'
           style={{ background: "transparent", boxShadow: "none" }}
         >
           <Toolbar>
             {/* Project Title */}
             <Button
-              variant="text"
+              variant='text'
               className={classes.login}
               component={Link}
-              to="/"
+              to='/'
               // onClick={props.handleFormSubmit}
             >
               <Typography
                 className={classes.name}
-                variant="h6"
-                color="inherit"
+                variant='h6'
+                color='inherit'
                 noWrap
               >
                 Movie<mark className={classes.mark}>Night</mark>
@@ -176,10 +176,10 @@ class PrimaryAppBar extends Component {
             <div className={classes.sectionDesktop}>
               {/* Login */}
               <Button
-                variant="text"
+                variant='text'
                 className={classes.login}
                 component={Link}
-                to="/login"
+                to='/login'
                 // onClick={props.handleFormSubmit}
               >
                 <Login />
@@ -187,11 +187,11 @@ class PrimaryAppBar extends Component {
               </Button>
               {/* Register */}
               <Button
-                variant="text"
+                variant='text'
                 className={classes.register}
-                color="primary"
+                color='primary'
                 component={Link}
-                to="/register"
+                to='/register'
                 // onClick={props.handleFormSubmit}
               >
                 <PersonAdd />
@@ -200,9 +200,9 @@ class PrimaryAppBar extends Component {
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
-                aria-haspopup="true"
+                aria-haspopup='true'
                 onClick={this.handleMobileMenuOpen}
-                color="inherit"
+                color='inherit'
               >
                 <MoreIcon />
               </IconButton>
@@ -217,7 +217,7 @@ class PrimaryAppBar extends Component {
 }
 
 PrimaryAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(PrimaryAppBar);

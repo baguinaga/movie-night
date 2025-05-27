@@ -7,13 +7,17 @@ import Register from "./pages/Register";
 
 const App = () => (
   <Router>
-    <div>    
+    <div>
       <PrimaryAppBar />
       <Switch>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route component={Main} />
+        <Route exact path='/' render={(props) => <Main {...props} />} />
+        <Route exact path='/login' render={(props) => <Login {...props} />} />
+        <Route
+          exact
+          path='/register'
+          render={(props) => <Register {...props} />}
+        />
+        <Route render={(props) => <Main {...props} />} />
       </Switch>
     </div>
   </Router>
